@@ -17,7 +17,7 @@ export class UserService {
 
   ) { }
 
-  url = `${this.apiUrl}/users`;
+  url = `${this.apiUrl}/users/`;
 
   //create user
   public create(user: User) {
