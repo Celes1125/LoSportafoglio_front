@@ -1,4 +1,4 @@
-export const environment = {
+export const enviroment = {
   production: true,
   apiUrl: 'https://losportafoglio.onrender.com'
 };
