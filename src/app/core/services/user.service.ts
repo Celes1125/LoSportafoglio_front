@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, finalize, tap } from 'rxjs';
 import { User } from '../interfaces/user';
-import { enviroment } from '../../../enviroments/enviroment.prod';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   localStorage!: Storage
-  private apiUrl: string = enviroment.apiUrl
+  private apiUrl: string = environment.apiUrl
 
   constructor(
     private httpClient: HttpClient
