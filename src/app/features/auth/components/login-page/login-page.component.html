@@ -1,0 +1,24 @@
+<div class="body">
+    <div class="main">
+        <input type="checkbox" id="checkbox" aria-hidden="true">
+        <div class="login">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <label for="checkbox" aria-hidden="true">Login</label>
+                <input type="email" autocomplete="off" placeholder="email" name="name" formControlName="email">
+                <input type="password" autocomplete="off" placeholder="password" name="password"
+                    formControlName="password">
+                <button type="submit" [disabled]="loginForm.invalid">login</button>
+            </form>
+        </div>
+        <div class="signup">
+            <form [formGroup]="form" (ngSubmit)="signup()">
+                <label for="checkbox" aria-hidden="true">Signup</label>
+                <input type="text" autocomplete="off" placeholder="user name" name="name" formControlName="name">
+                <input type="email" autocomplete="off" placeholder="email" name="name" formControlName="email">
+                <input type="password" autocomplete="off" placeholder="password" name="password"
+                    formControlName="password">
+                <button type="submit" [disabled]="form.invalid">signup</button>
+            </form>
+        </div>
+    </div>
+</div>

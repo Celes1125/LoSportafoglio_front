@@ -1,0 +1,26 @@
+
+-mostrar reportes: 
+            -historial de movimientos con opción de filtrado por año/mes/usuario/, descarga en pdf y csv desde front y desde back
+            -grafico de torta, porcentaje y total de movimientos por categoría, filtro anual/mensual            
+            -podio de proveedores
+            -opción de archivo de reportes en la nube antes de borrar historial o datos de la app...
+-poder compartir una misma wallet de modo que se puedan realizar y ver todos los movimientos de todos los usuarios que compartan la misma wallet
+-seguridad: en firefox se ven los datos de usuario y password en la request...
+-no se manejan bien los valores negativos de los bolsillos
+-limpiar
+-front aceptable, estándar... para desk y movile
+-actualizar...
+-produccion
+
+//WHEN I DONT REMEMBER CONCAT MAP SINTAX AND FLOW:
+/*Observable1.pipe(
+  tap(retornoDelObservable1 => console.log(retornoDelObservable1)),
+  concatMap(retornoDelObservable1 => {
+    return Observable2(retornoDelObservable1); // Debes retornar el observable
+  }),
+  concatMap(retornoDelObservable2 => {
+    return Observable3(retornoDelObservable2); // Igualmente, retornas el observable
+  })
+).subscribe(finalResult => {
+  // Aquí puedes manejar el resultado final después de que todo se complete
+});*/

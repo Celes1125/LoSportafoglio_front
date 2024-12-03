@@ -1,0 +1,106 @@
+.body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: hwb(212 61% 7% / 0.884);
+    display: flex;
+  }
+  
+  .main {
+    width: 350px;
+    height: 500px;
+    background: hwb(212 61% 7% / 0.884);
+    overflow: hidden;
+    /*background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2gsWPlRtF111T4_j9z3TCtMzucxdOawnXPw&usqp=CAU') no-repeat center / cover;
+  */
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px black;
+  }
+  
+  #checkbox {
+    display: none;
+  }
+  
+  .login {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  
+  }
+  
+  label {
+    color: rgba(3, 71, 71, 0.829);
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+  }
+  
+  input {
+    width: 60%;
+    height: 20px;
+    background: #f5f1f1;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  
+  }
+  
+  button {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: rgba(43, 128, 226, 0.726);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+  
+  }
+  
+  button:hover {
+    background: rgba(43, 55, 226, 0.877);
+  }
+  
+  .signup {
+  
+    height: 460px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(-180px);
+    transition: .8s ease-in-out;
+  }
+  
+  .signup label {
+    color: rgba(3, 71, 71, 0.829);
+    transform: scale(.6);
+  }
+  
+  #checkbox:checked~.signup {
+    transform: translateY(-500px)
+  }
+  
+  #checkbox:checked~.signup label {
+    transform: scale(1)
+  }
+  
+  #checkbox:checked~.login label {
+    transform: scale(.6)
+  }
