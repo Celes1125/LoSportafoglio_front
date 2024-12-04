@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreateWalletDialogComponent } from '../../share/dialogs/create-wallet-dialog/create-wallet-dialog.component';
 import { DeleteWalletDialogComponent } from '../../share/dialogs/delete-wallet-dialog/delete-wallet-dialog.component';
+import { EditWalletDialogComponent } from '../../share/dialogs/edit-wallet-dialog/edit-wallet-dialog.component';
 
 @Component({
   selector: 'app-wallets-page',
