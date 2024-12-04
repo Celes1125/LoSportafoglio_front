@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
-import { VendorService } from '../../../../services/vendor.service';
-import { Vendor } from '../../../../interfaces/vendor';
-import { VendorsDialogComponent } from '../../dialogs/vendors-dialog/vendors-dialog.component';
+import { VendorService } from '../../core/services/vendor.service';
+import { Vendor } from '../../core/interfaces/vendor';
+import { VendorsDialogComponent } from '../../share/dialogs/vendors-dialog/vendors-dialog.component';
 // Material Design
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';

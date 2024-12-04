@@ -1,17 +1,17 @@
 
 import { MatIconModule } from '@angular/material/icon';
-import { DeleteAllMovementsDialogComponent } from '../../dialogs/delete-all-movements-dialog/delete-all-movements-dialog.component';
+import { DeleteAllMovementsDialogComponent } from '../../share/dialogs/delete-all-movements-dialog/delete-all-movements-dialog.component';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MovementService } from '../../../../services/movement.service';
+import { MovementService } from '../../core/services/movement.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { Movement } from '../../../../interfaces/movement';
+import { Movement } from '../../core/interfaces/movement';
 import { CommonModule } from '@angular/common';
 import { catchError, of, tap } from 'rxjs';
 

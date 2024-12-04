@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { WalletComponent } from '../../main/wallet/wallet.component';
-import { WalletService } from '../../../../services/wallet.service';
+import { WalletComponent } from '../../core/features/wallet/wallet.component';
+import { WalletService } from '../../core/services/wallet.service';
 import { FormsModule } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 import { RouterModule, Router } from '@angular/router';
-import { Wallet } from '../../../../interfaces/wallet';
-import { SharedService } from '../../../../services/shared.service';
-import { lastValueFrom, Observable } from 'rxjs';
+import { Wallet } from '../../core/interfaces/wallet';
+import { SharedService } from '../../core/services/shared.service';
+import { lastValueFrom } from 'rxjs';
 // Material Design
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,9 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { EditWalletDialogComponent } from '../../dialogs/edit-wallet-dialog/edit-wallet-dialog.component';
-import { CreateWalletDialogComponent } from '../../dialogs/create-wallet-dialog/create-wallet-dialog.component';
-import { DeleteWalletDialogComponent } from '../../dialogs/delete-wallet-dialog/delete-wallet-dialog.component';
+import { EditWalletDialogComponent } from '../../share/dialogs/edit-wallet-dialog/edit-wallet-dialog.component';
+import { CreateWalletDialogComponent } from '../../share/dialogs/create-wallet-dialog/create-wallet-dialog.component';
+import { DeleteWalletDialogComponent } from '../../share/dialogs/delete-wallet-dialog/delete-wallet-dialog.component';
 
 @Component({
   selector: 'app-wallets-page',

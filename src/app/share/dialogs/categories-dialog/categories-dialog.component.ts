@@ -18,7 +18,7 @@ export class CategoriesDialogComponent implements OnInit {
   form!: FormGroup
   editForm!: FormGroup
   categories: Category[] = []
-  categories$: Observable<Category[]> = this._categoryService.getAll()
+  
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -42,7 +42,7 @@ export class CategoriesDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$.subscribe((response) => {
+    this._categoryService.getAll().subscribe((response) => {
       this.categories = response
       console.log('categories on dialog: ', this.categories)
     })

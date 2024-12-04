@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { Wallet } from '../../../core/interfaces/wallet';
-import { WalletComponent } from '../../../core/features/wallet/wallet.component';
 import { WalletService } from '../../../core/services/wallet.service';
 //Material Design
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,7 +9,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-edit-wallet-name-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, WalletComponent, RouterModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, ReactiveFormsModule, FormsModule],
   templateUrl: './edit-wallet-name-dialog.component.html',
   styleUrl: './edit-wallet-name-dialog.component.css'
 })

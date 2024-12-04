@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { VendorService } from '../../../core/services/vendor.service';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-vendors-dialog',
@@ -18,13 +18,14 @@ export class VendorsDialogComponent implements OnInit {
   form!: FormGroup
   editForm!: FormGroup
   vendors: Vendor[] = []
-  vendors$: Observable<Vendor[]> = this._vendorService.getAll()
+  
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _vendorService: VendorService,
     private _formBuilder: FormBuilder
   ) {
+    
     this.vendor = this.data.vendor
     this.deleteFlag = this.data.deleteFlag
     this.form = this._formBuilder.group({
@@ -38,8 +39,9 @@ export class VendorsDialogComponent implements OnInit {
     }
 
   }
-  ngOnInit(): void {
-    this.vendors$.subscribe((response) => {
+  ngOnInit(): void {    
+    
+    this._vendorService.getAll().subscribe((response) => {
       this.vendors = response;
       console.log('vendors on dialog: ', this.vendors)
     });

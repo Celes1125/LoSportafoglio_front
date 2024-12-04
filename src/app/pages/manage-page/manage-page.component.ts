@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { WalletComponent } from '../../main/wallet/wallet.component';
+import { WalletComponent } from '../../core/features/wallet/wallet.component';
 import { WalletsPageComponent } from '../wallets-page/wallets-page.component';
 import { CategoriesPageComponent } from '../categories-page/categories-page.component';
 import { VendorsPageComponent } from '../vendors-page/vendors-page.component';
@@ -9,7 +9,7 @@ import { VendorsPageComponent } from '../vendors-page/vendors-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { PocketsDialogComponent } from '../../dialogs/pockets-dialog/pockets-dialog.component';
+import { PocketsDialogComponent } from '../../share/dialogs/pockets-dialog/pockets-dialog.component';
 
 
 @Component({

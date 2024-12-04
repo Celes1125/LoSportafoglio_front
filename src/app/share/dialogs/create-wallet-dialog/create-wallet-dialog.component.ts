@@ -1,7 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WalletComponent } from '../../../core/features/wallet/wallet.component';
 import { WalletService } from '../../../core/services/wallet.service';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,14 +10,14 @@ import { Wallet } from '../../../core/interfaces/wallet';
 @Component({
   selector: 'app-create-wallet-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, FormsModule, RouterModule, WalletComponent],
+  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, FormsModule, RouterModule],
   templateUrl: './create-wallet-dialog.component.html',
   styleUrl: './create-wallet-dialog.component.css'
 })
 export class CreateWalletDialogComponent implements OnInit {
   walletForm: FormGroup
   userWallets!: Wallet[]
-  wallets$: Observable<Wallet[]> = this._walletService.getAll()
+  
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -31,7 +30,7 @@ export class CreateWalletDialogComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.wallets$.subscribe(response => this.userWallets = response)
+    this._walletService.getAll().subscribe(response => this.userWallets = response)
     console.log('OnInit user wallets list: ', this.userWallets);
 
   }
