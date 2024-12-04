@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { EditWalletDialogComponent } from '../../share/dialogs/edit-wallet-dialog/edit-wallet-dialog.component';
 import { CreateWalletDialogComponent } from '../../share/dialogs/create-wallet-dialog/create-wallet-dialog.component';
 import { DeleteWalletDialogComponent } from '../../share/dialogs/delete-wallet-dialog/delete-wallet-dialog.component';
 
@@ -22,7 +21,7 @@ import { DeleteWalletDialogComponent } from '../../share/dialogs/delete-wallet-d
   standalone: true,
   templateUrl: './wallets-page.component.html',
   styleUrl: './wallets-page.component.css',
-  imports: [EditWalletDialogComponent, MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule]
+  imports: [MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule]
 })
 export class WalletsPageComponent {
 
