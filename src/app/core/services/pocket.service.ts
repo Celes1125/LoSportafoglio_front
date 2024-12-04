@@ -2,11 +2,13 @@ import { Observable, catchError, defaultIfEmpty, finalize, map, of, switchMap, t
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pocket } from '../interfaces/pocket';
+import { environment } from '../../../environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class PocketService {
-  url = "https://losportafoglio.onrender.com/pockets/"
+  private apiUrl: string = environment.apiUrl
+  url = `${this.apiUrl}/pockets/`
 
   constructor(
     private http: HttpClient,    

@@ -6,6 +6,7 @@ import { PocketService } from './pocket.service';
 import { Wallet } from '../interfaces/wallet';
 import { Pocket } from '../interfaces/pocket';
 import { MovementService } from './movement.service';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { MovementService } from './movement.service';
 export class WalletService {
 
   userId!: string
+  private apiUrl:string = environment.apiUrl
   constructor(private http: HttpClient,
     private _authService: AuthenticationService,
     private _pocketService: PocketService,
@@ -22,7 +24,7 @@ export class WalletService {
 
   }
 
-  url = "https://losportafoglio.onrender.com/wallets/"
+  url = `${this.apiUrl}/wallets/`
 
   // returns all not deleted wallets of the user
   getAll(): Observable<Wallet[]> {

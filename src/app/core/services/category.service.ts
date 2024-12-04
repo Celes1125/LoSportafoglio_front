@@ -3,11 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, concatMap, defaultIfEmpty, filter, finalize, map, of, switchMap, tap, throwError } from 'rxjs';
 import { Category } from '../interfaces/category';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../../../environments/environment.prod';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  url = "https://losportafoglio.onrender.com/categories/"
+  private apiUrl: string = environment.apiUrl
+
+  url = `${this.apiUrl}/categories/`
   userId!: string
   constructor(
     private http: HttpClient,

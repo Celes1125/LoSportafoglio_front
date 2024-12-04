@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Observable, catchError, finalize, of, tap, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  private apiUrl: string = environment.apiUrl
+
   constructor(
     private httpClient: HttpClient,
     private userService: UserService) { }
@@ -39,8 +42,7 @@ export class AuthenticationService {
   isLogged() {
     return !!localStorage.getItem('token')
   }
-
-  // get user id
+  
   // get user id
 getUserId(): Observable<any> {
   const token = localStorage.getItem('token');
@@ -50,7 +52,7 @@ getUserId(): Observable<any> {
   }
 
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  return this.httpClient.get(`https://losportafoglio.onrender.com/users/token/${token}`, { headers }).pipe(
+  return this.httpClient.get(`${this.apiUrl}/users/token/${token}`, { headers }).pipe(
     tap((response: any) => {
       console.log('userId from auth service: ', response);
       return response;

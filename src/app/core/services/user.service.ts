@@ -12,8 +12,7 @@ export class UserService {
   private apiUrl: string = environment.apiUrl
 
   constructor(
-    private httpClient: HttpClient
-    
+    private httpClient: HttpClient    
 
   ) { }
 

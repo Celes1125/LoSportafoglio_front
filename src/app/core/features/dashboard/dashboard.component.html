@@ -1,0 +1,24 @@
+<div class="body">
+  <div class="main">
+    <app-top-menu></app-top-menu>
+
+    <div *ngIf="homeFlag || manageFlag || reportFlag">
+      <ng-container class="common-container" *ngIf="homeFlag">
+        <app-home></app-home>
+      </ng-container>
+
+      <ng-container class="common-container" *ngIf="manageFlag">
+        <app-manage-page></app-manage-page>
+      </ng-container>
+
+      <ng-container class="common-container" *ngIf="reportFlag">
+        <app-reports-page></app-reports-page>
+      </ng-container>
+    </div>
+
+    <app-bottom-menu (homeFlag)="setHomeFlag($event)" (walletFlag)="setManageFlag($event)"
+      (reportFlag)="setReportFlag($event)">
+    </app-bottom-menu>
+
+  </div>
+</div>

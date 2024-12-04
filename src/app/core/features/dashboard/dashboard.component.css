@@ -1,0 +1,33 @@
+.body {
+  display: flex;
+    margin: 0;    
+    padding: 5px;    
+    place-content: center;   
+    min-height: 100vh;    
+    background: #d3ebd0e1;
+     
+    
+  }
+  .main {
+      
+  width: 100%;
+  min-height: 150vh;
+  background: hsla(86, 82%, 53%, 0.555);
+  border-radius: 5px;
+  box-shadow: 5px 20px 50px black;
+  padding: 15px;
+  margin: auto;
+  
+  }
+
+.common-container {
+  display: flex;
+  place-content:center;
+  width: 75%;
+  margin: auto;
+  height: 80%;
+  border-radius: 5px; 
+ 
+ 
+
+}

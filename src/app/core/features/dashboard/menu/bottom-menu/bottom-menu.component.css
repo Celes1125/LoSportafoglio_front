@@ -1,0 +1,13 @@
+.main {
+  position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0px;  
+    
+  }
+ 
+
+mat-icon {
+    color:aliceblue
+}

@@ -1,0 +1,42 @@
+@if (category && deleteFlag==undefined) {
+<h2 mat-dialog-title>Edit category</h2>
+<form [formGroup]="editForm">
+    <mat-dialog-content class="mat-typography">
+        Name
+        <input name="editname" formControlName="editname">
+        Description
+        <input name="editdescription" formControlName="editdescription">
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button (click)="editCategory()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+    </mat-dialog-actions>
+</form>
+}@else if (category && deleteFlag) {
+<h2 mat-dialog-title>Delete category</h2>
+<mat-dialog-content class="mat-typography">
+    <p>Are you sure about delete the category {{category.name}}?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="deleteCategory()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>DELETE</button>
+</mat-dialog-actions>
+}@else if (category==undefined && deleteFlag==undefined){
+<form [formGroup]="form">
+    <h2 mat-dialog-title>Create new category</h2>
+    <mat-dialog-content class="mat-typography">
+        <label>Name
+            <input placeholder="write a name for your category" name="name" formControlName="name">
+        </label>
+        <label>Description
+            <input placeholder="write an optional description" name="description" formControlName="description">
+        </label>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button (click)="createNewCategory()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>CREATE
+            category</button>
+    </mat-dialog-actions>
+</form>
+
+}

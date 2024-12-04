@@ -1,0 +1,13 @@
+<div>
+  <h2 mat-dialog-title>Share wallet</h2>
+  <mat-dialog-content class="mat-typography">
+    <p>Your wallet's name now: </p>
+    {{ wallet.name }}
+    <p>Share your wallet with: </p>
+    <input [(ngModel)]="userEmail" placeholder="user name of who you want to share this wallet">
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="sendInvitation()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Send invitation</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,14 @@
+<h1>Your notifications</h1>
+
+@if(notifications){    
+    <div *ngFor="let notification of notifications">
+        <section>
+          <p>Date: {{notification.createdAt}}</p>
+         <p>by: {{ notification.senderUser.name }} </p>  
+         <p>to: {{ notification.receiverUser.name }} </p>  
+         <p>to: {{ notification.wallet.name }} </p> 
+
+        </section>
+
+    </div>
+}

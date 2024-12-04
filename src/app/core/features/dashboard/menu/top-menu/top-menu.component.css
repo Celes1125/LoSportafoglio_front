@@ -1,0 +1,10 @@
+div {
+    display:flex;
+    justify-content: right;
+    
+    
+}
+button {
+    font-size: medium;
+    color: white;
+}

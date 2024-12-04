@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, concatMap, defaultIfEmpty, finalize, of, tap, throwError } from 'rxjs';
 import { Vendor } from '../interfaces/vendor';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class VendorService {
-  url = "https://losportafoglio.onrender.com/vendors/"
+  private apiUrl:string = environment.apiUrl
+  url = `${this.apiUrl}/vendors/`
   userId!: string
 
   constructor(

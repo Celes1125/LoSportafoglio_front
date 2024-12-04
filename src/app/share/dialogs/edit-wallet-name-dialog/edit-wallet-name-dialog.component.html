@@ -1,0 +1,13 @@
+<div #editWalletsName>
+  <h2 mat-dialog-title>Edit wallet's name</h2>
+  <mat-dialog-content class="mat-typography">
+    <p>Your wallet's name now: </p>
+    {{ wallet.name }}
+    <p>Your wallet's new name: </p>
+    <input [(ngModel)]="newName" placeholder="write here a new name for your wallet">
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="editWalletName()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+  </mat-dialog-actions>
+</div>

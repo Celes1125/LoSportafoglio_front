@@ -2,19 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { catchError, concatMap, defaultIfEmpty, finalize, Observable, of, tap } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
   userId!: string
+  private apiUrl:string = environment.apiUrl
   constructor(
     private http: HttpClient,
     private _authService: AuthenticationService,
   ) {
     this._authService.getUserId().subscribe(response => this.userId = response)
   }
-  url = "https://losportafoglio.onrender.com/notifications/"
+  url = `${this.apiUrl}/notifications/`
 
   // send notification
   sendInvitation(walletId: string, userEmail: string): Observable<any> {

@@ -1,0 +1,62 @@
+@if (pocketId && deleteFlag==undefined) {
+<h2 mat-dialog-title>Edit pocket</h2>
+<form [formGroup]="editPocketForm" (ngSubmit)="editPocket()">
+  <mat-dialog-content class="mat-typography">
+    <input type="text" autocomplete="off" name="name" placeholder="name" formControlName="name">
+    <select type="text" autocomplete="on" name="currency" formControlName="currency">
+      <option value="euro">$eu</option>
+      <option value="dolar">$usd</option>
+      <option value="peso">$ar</option>
+    </select>
+
+    <select type="text" autocomplete="off" name="wallet" formControlName="wallet">
+      <option *ngFor="let wallet of wallets" [value]="wallet._id">{{wallet.name}}</option>
+    </select>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+  </mat-dialog-actions>
+</form>
+
+}
+@else if (pocketId && deleteFlag) {
+<h2 mat-dialog-title>Delete Pocket</h2>
+
+<mat-dialog-content class="mat-typography">
+
+
+  <p>Are you sure about delete it?</p>
+  <p>Don't worry, the pocket's movements will remain in your history even after this deletion</p>
+  <input type="hidden" matInput [(ngModel)]="id">
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button type="submit" (click)="logic_deletePocket()" [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+</mat-dialog-actions>
+
+}
+@else if (pocketId == undefined && deleteFlag==undefined ) {
+<h2 mat-dialog-title>Add new pocket</h2>
+<form [formGroup]="addPocketForm" (ngSubmit)="addPocket()">
+  <mat-dialog-content class="mat-typography">
+    <br>
+    <input type="text" autocomplete="off" placeholder="name" name="name" formControlName="name">
+    <br>
+    <select type="text" autocomplete="off" name="currency" formControlName="currency">
+      <option value="euro">$eu</option>
+      <option value="dolar">$usd</option>
+      <option value="peso">$ar</option>
+    </select>
+    <br>
+    <select type="text" autocomplete="off" name="wallet" formControlName="wallet">
+      <option *ngFor="let wallet of wallets" [value]="wallet._id">{{wallet.name}}</option>
+    </select>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+  </mat-dialog-actions>
+</form>
+
+}
