@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletComponent } from '../../core/features/wallet/wallet.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { CategoryService } from '../../core/services/category.service';
@@ -15,7 +14,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-categories-page',
   standalone: true,
-  imports: [WalletComponent, MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule],
+  imports: [ MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule],
   templateUrl: './categories-page.component.html',
   styleUrl: './categories-page.component.css'
 })

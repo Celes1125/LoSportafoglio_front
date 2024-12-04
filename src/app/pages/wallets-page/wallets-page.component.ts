@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { WalletComponent } from '../../core/features/wallet/wallet.component';
 import { WalletService } from '../../core/services/wallet.service';
 import { FormsModule } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -23,7 +22,7 @@ import { DeleteWalletDialogComponent } from '../../share/dialogs/delete-wallet-d
   standalone: true,
   templateUrl: './wallets-page.component.html',
   styleUrl: './wallets-page.component.css',
-  imports: [EditWalletDialogComponent, WalletComponent, MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule]
+  imports: [EditWalletDialogComponent, MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule]
 })
 export class WalletsPageComponent {
 

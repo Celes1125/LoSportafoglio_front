@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { WalletComponent } from '../../core/features/wallet/wallet.component';
 import { WalletsPageComponent } from '../wallets-page/wallets-page.component';
 import { CategoriesPageComponent } from '../categories-page/categories-page.component';
 import { VendorsPageComponent } from '../vendors-page/vendors-page.component';
@@ -15,7 +14,7 @@ import { PocketsDialogComponent } from '../../share/dialogs/pockets-dialog/pocke
 @Component({
     selector: 'app-manage-page',
     standalone: true,
-    imports: [CommonModule, WalletComponent, MatButtonModule, MatIconModule, MatDialogModule, RouterModule],
+    imports: [CommonModule, MatButtonModule, MatIconModule, MatDialogModule, RouterModule],
     templateUrl: './manage-page.component.html',
     styleUrl: './manage-page.component.css',
 })
