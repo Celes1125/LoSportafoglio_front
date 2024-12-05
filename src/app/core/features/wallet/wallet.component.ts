@@ -129,6 +129,7 @@ export class WalletComponent implements OnInit {
         dialogRef.afterClosed().subscribe(
             response => {
                 if (response) {
+                    alert('new user for your wallet added ok')
                     this.router.navigateByUrl('/dashboard');
                 }
             });

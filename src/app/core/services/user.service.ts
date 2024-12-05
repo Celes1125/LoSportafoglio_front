@@ -32,4 +32,9 @@ export class UserService {
   public login(email: string, password: string): Observable<any> {
     return this.httpClient.post(this.url + 'login', { email: email, password: password })
   }
+
+  // get user by email
+  public getUserByEmail(email:string){
+    return this.httpClient.get(this.url+email)    
+  }
 }

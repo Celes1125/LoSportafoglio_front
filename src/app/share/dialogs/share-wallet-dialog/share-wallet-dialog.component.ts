@@ -3,7 +3,8 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NotificationService } from '../../../core/services/notification.service';
+import { WalletService } from '../../../core/services/wallet.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-share-wallet-dialog',
@@ -14,18 +15,24 @@ import { NotificationService } from '../../../core/services/notification.service
 })
 export class ShareWalletDialogComponent {
   userEmail: string = '';
-  wallet: any
+  wallet: any;
+  newUserId:any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    @Inject(NotificationService) private _notificationService: NotificationService,
+    @Inject(WalletService) private _walletService: WalletService,
+    @Inject(UserService) private _userService: UserService
   ) {
     this.wallet = this.data.wallet
   }
 
-  sendInvitation() {
-    this._notificationService.sendInvitation(this.wallet._id, this.userEmail).subscribe(
-      (response: any) => response
-    )
+  addNewUserToMyWallet(){
+    this._userService.getUserByEmail(this.userEmail).subscribe((response:any) => {
+      this.newUserId = response._id
+    })
+    const newWallet= {...this.wallet, users: [...this.newUserId]}
+    this._walletService.edit(newWallet)
+
   }
 
+  
 }

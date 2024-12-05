@@ -4,7 +4,6 @@ import { RouterModule, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NotificationsPageComponent } from '../../../../../pages/notifications-page/notifications-page.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
@@ -33,10 +32,7 @@ export class TopMenuComponent {
     });
   }
 
-  openNotificationsPage() {
-    const dialogRef = this.dialog.open(NotificationsPageComponent, {})
-    dialogRef.afterClosed().subscribe()
-  }
+  
 
 
 
