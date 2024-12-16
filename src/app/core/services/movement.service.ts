@@ -5,7 +5,7 @@ import { catchError, finalize, map, tap, switchMap, of, Observable, filter, fork
 import { PocketService } from './pocket.service';
 import { Pocket } from '../interfaces/pocket';
 import { AuthenticationService } from './authentication.service';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
