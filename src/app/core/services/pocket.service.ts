@@ -2,7 +2,7 @@ import { Observable, catchError, defaultIfEmpty, finalize, map, of, switchMap, t
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pocket } from '../interfaces/pocket';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })

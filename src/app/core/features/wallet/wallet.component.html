@@ -9,9 +9,16 @@
   
   <button (click)="openPocketsDialog()">Add pocket</button>
   <button (click)="openEditWalletNameDialog(wallet)">edit wallet name</button>
-  <button (click)="openShareWalletDialog(wallet)">Share my wallet</button>
-  <h1> total amount: {{totalAmount}}</h1>
-  <h1> monto total sin ingresos: {{netoAmount}}</h1>
+  <button (click)="openShareOptionsDialog(wallet)">Share options</button>
+
+  <h3> total amount: {{totalAmount}}</h3>
+  <h3> total amount without main incomes: {{netoAmount}}</h3>
+  <h3> members of this wallet:</h3>
+  @for (user of users; track $index) {
+    <li>{{user.name}}</li>
+  }
+  
+
   <br>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   

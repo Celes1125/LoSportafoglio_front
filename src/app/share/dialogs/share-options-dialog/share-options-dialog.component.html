@@ -1,0 +1,20 @@
+
+
+<div>
+  <h2 mat-dialog-title>Share wallet</h2>
+  <mat-dialog-content class="mat-typography">
+    <p>Your wallet's name: </p>
+    {{ wallet.name }}
+    <p>Share this wallet with / remove user from this wallet: </p>
+    <p>(If you want to remove yourself from this wallet, please insert your own email)</p>
+    <input [(ngModel)]="userEmail" placeholder="user name of who you want to share this wallet">
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="addNewUserToWallet()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Add new user to my wallet</button>
+    <button (click)="removeUserFromWallet()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Remove user of my wallet</button>
+    
+
+  </mat-dialog-actions>
+</div>
+
