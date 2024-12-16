@@ -11,8 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Wallet } from '../../interfaces/wallet';
 import { EditWalletNameDialogComponent } from '../../../share/dialogs/edit-wallet-name-dialog/edit-wallet-name-dialog.component';
-import { ShareWalletDialogComponent } from '../../../share/dialogs/share-wallet-dialog/share-wallet-dialog.component';
-
+import { ShareOptionsDialogComponent } from '../../../share/dialogs/share-options-dialog/share-options-dialog.component';
+import { User } from '../../interfaces/user';
 
 @Component({
     selector: 'app-wallet',
@@ -33,6 +33,7 @@ export class WalletComponent implements OnInit {
     totalAmount!: number
     netoAmount!: number
     deleteFlag: boolean = true
+    users: User[] = [];
 
     constructor(
         private walletService: WalletService,
@@ -43,8 +44,17 @@ export class WalletComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPocketsOfWallet()
+        this.getUsersOfTheWallet()
 
     }
+
+    getUsersOfTheWallet () {
+        if(this.wallet !== undefined){
+            this.users = this.wallet.users
+        }
+    }
+    
+
 
     getPocketsOfWallet() {
         if (this.wallet !== undefined) {
@@ -119,19 +129,28 @@ export class WalletComponent implements OnInit {
             });
     }
 
-    openShareWalletDialog(wallet: Wallet) {
-        const dialogRef = this.dialog.open(ShareWalletDialogComponent, {
+    openShareOptionsDialog(wallet: Wallet) {
+        const dialogRef = this.dialog.open(ShareOptionsDialogComponent, {
             data: {
-                wallet: wallet
+                wallet: wallet,
+                walletId: wallet._id
             }
         });
 
         dialogRef.afterClosed().subscribe(
             response => {
-                if (response) {
+                console.log('RESPONSE: ', response)
+                if (response &&response.success) {
                     alert('new user for your wallet added ok')
                     this.router.navigateByUrl('/dashboard');
-                }
+                }else if (response && response.error) {
+                    alert(`Error: ${response.error}`);
+                    this.router.navigateByUrl('/dashboard');
+                } else {
+                    console.error('No response or operation was cancelled');
+                    this.router.navigateByUrl('/dashboard');
+
+                }                
             });
 
     }

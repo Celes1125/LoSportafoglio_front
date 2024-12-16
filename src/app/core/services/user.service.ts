@@ -1,40 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, finalize, tap } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  localStorage!: Storage
-  private apiUrl: string = environment.apiUrl
+  private apiUrl: string = environment.apiUrl; // Base URL desde el entorno
+  private url = `${this.apiUrl}/users/`; // Endpoint para usuarios
 
-  constructor(
-    private httpClient: HttpClient    
+  constructor(private httpClient: HttpClient) { }
 
-  ) { }
-
-  url = `${this.apiUrl}/users/`;
-
-  //create user
-  public create(user: User) {
-    return this.httpClient.post(this.url, user).pipe(
-      tap(response => console.log('create user ok: ')),
-      catchError(error => error),
-      finalize(() => { console.log('create user subscription ended'); })
-    );
-
+  // Crear usuario
+  public create(user: User): Observable<any> {
+    return this.httpClient.post(this.url, user);
   }
 
-  //login
+  // Login
   public login(email: string, password: string): Observable<any> {
-    return this.httpClient.post(this.url + 'login', { email: email, password: password })
+    return this.httpClient.post(`${this.url}login`, { email, password });
   }
 
-  // get user by email
-  public getUserByEmail(email:string){
-    return this.httpClient.get(this.url+email)    
+  // Obtener usuario por email
+  public getUserByEmail(userEmail: string): Observable<User> {
+    // El endpoint espera el parámetro `email` en la query string
+    const params = new HttpParams().set('email', userEmail);
+
+    // Imprime la URL final para depuración
+    console.log('URL final: ', `${this.url}email?email=${userEmail}`);
+
+    // Realiza la solicitud HTTP GET
+    return this.httpClient.get<User>(`${this.url}email`, { params });
   }
 }

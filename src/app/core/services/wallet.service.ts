@@ -5,8 +5,9 @@ import { AuthenticationService } from './authentication.service';
 import { PocketService } from './pocket.service';
 import { Wallet } from '../interfaces/wallet';
 import { Pocket } from '../interfaces/pocket';
-import { MovementService } from './movement.service';
-import { environment } from '../../../environments/environment.prod';
+import { UserService } from './user.service';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class WalletService {
   constructor(private http: HttpClient,
     private _authService: AuthenticationService,
     private _pocketService: PocketService,
-    private _movementService: MovementService) {
+    private _userService: UserService) {
 
     this._authService.getUserId().subscribe(response => this.userId = response)
 
@@ -138,6 +139,8 @@ export class WalletService {
       finalize(() => console.log("add new wallet and main pocket subscription ended"))
     );
   }
+
+   
 
 
 }
