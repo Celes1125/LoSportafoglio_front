@@ -1,0 +1,21 @@
+.movement-options-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    gap: 5px;
+}
+
+.movement-options-buttons > button {
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.movements-table {
+    max-height: 60vh;
+    overflow: auto;
+}

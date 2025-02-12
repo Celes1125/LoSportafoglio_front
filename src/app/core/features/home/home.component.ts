@@ -90,22 +90,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         });
     }
 
-    openAddMovementDialog(movement_type: string) {
-        const dialogRef = this.dialog.open(MovementsDialogComponent, {
-            data: {
-                wallet: this.selectedWallet,
-                walletId: this.selectedWallet ? this.selectedWallet._id : null,
-                movement_type: movement_type
-            }
-        });
-        dialogRef.afterClosed().subscribe(
-            response => {
-                if (response) {
-                    alert("movement successfully added")
-                    this.router.navigateByUrl('/dashboard');
-                }
-            });
-    }
+    
 }
 
 

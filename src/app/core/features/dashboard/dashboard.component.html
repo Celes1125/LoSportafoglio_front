@@ -1,24 +1,25 @@
-<div class="body">
-  <div class="main">
-    <app-top-menu></app-top-menu>
+<div class="main-container">
 
-    <div *ngIf="homeFlag || manageFlag || reportFlag">
-      <ng-container class="common-container" *ngIf="homeFlag">
+  <div class="dashboard-container">
+    <!-- main menu -->
+    <div class="main-menu">
+      <app-main-menu (homeFlag)="setHomeFlag($event)" (walletFlag)="setManageFlag($event)"
+        (reportFlag)="setReportFlag($event)"></app-main-menu>
+    </div>
+    <!-- main content: 
+  if the user select home/manage/reports from the bottom menu, the main content will show
+  the corresponding component template -->
+    <div class="content-container" *ngIf="homeFlag || manageFlag || reportFlag">
+      <ng-container *ngIf="homeFlag">
         <app-home></app-home>
       </ng-container>
-
-      <ng-container class="common-container" *ngIf="manageFlag">
+      <ng-container *ngIf="manageFlag">
         <app-manage-page></app-manage-page>
       </ng-container>
-
-      <ng-container class="common-container" *ngIf="reportFlag">
+      <ng-container *ngIf="reportFlag">
         <app-reports-page></app-reports-page>
       </ng-container>
     </div>
-
-    <app-bottom-menu (homeFlag)="setHomeFlag($event)" (walletFlag)="setManageFlag($event)"
-      (reportFlag)="setReportFlag($event)">
-    </app-bottom-menu>
-
   </div>
+
 </div>

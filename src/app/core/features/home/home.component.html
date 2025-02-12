@@ -1,22 +1,27 @@
+<div class="home">
 
-<div #createWallet style="display: none;">
-    <p>You don't have any wallets yet. Please create one to get started!</p>
-    <button (click)="openCreateWalletDialog()">Create Wallet</button>
-</div>
-
-<div #selectWallet style="display: none;">
-    <h2>Select a wallet to use</h2>
-    <app-wallets-page></app-wallets-page>
-</div>
-
-<div #showingWallet style="display: none;">
-    @if(selectedWallet){
-    <app-wallet [wallet]="selectedWallet"></app-wallet>
-    <div>
-        <p>Add new</p>
-        <button (click)="openAddMovementDialog('expense')">Expense</button>
-        <button (click)="openAddMovementDialog('income')">Income</button>
-        <button (click)="openAddMovementDialog('transfer')">Transfer</button>
+    <div class="create" #createWallet style="display: none;">
+        
+        <p>You don't have any wallets yet</p>
+        <p>Please create one to get started!</p>
+        <button id="create-button" (click)="openCreateWalletDialog()">Create Wallet</button>
     </div>
-    }
+
+    <div class="select" #selectWallet style="display: none;">
+        <p>Please, select a wallet to use:</p>
+        <app-wallets-page></app-wallets-page>
+    </div>
+
+    <div #showingWallet style="display: none;">
+        @if(selectedWallet){
+        <div class="showing-wallet">
+            <div class="wallet">
+                <app-wallet [wallet]="selectedWallet"></app-wallet>
+            </div>
+
+            
+        </div>
+        }
+    </div>
+
 </div>
