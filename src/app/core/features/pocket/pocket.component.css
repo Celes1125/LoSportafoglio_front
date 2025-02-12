@@ -1,0 +1,71 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;       
+    padding: 1px;    
+    position: relative; /* Important for positioning the actions */
+    z-index: 10;
+    overflow: hidden;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    position: absolute;
+    top: 2;
+    left: 0; /* Ensure they are within the container's bounds */
+    right: 0; /* Ensure they are within the container's bounds */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Fade in/out effect */
+}
+
+.main-container:hover .card-actions {
+    opacity: 1; /* Show on hover */
+}
+
+.main-container:hover .card-title {
+    text-align: center;
+    border: none;
+    color: hwb(240 60% 39%);
+}
+
+.main-container:hover .card-content {    
+    color: hwb(240 60% 39%);
+}
+
+.card-title{
+    display: inline-block;
+    width: 100%;    
+    text-align: left;
+    font-size: larger;
+    padding: 2px;    
+    border-bottom: 1px solid blue;       
+}
+
+.card-content {
+    text-align: center;
+    padding: 3px;
+}
+
+/* Optional: Style the icons */
+.card-actions i {
+    cursor: pointer;
+    color: #555; /* Or any color you prefer */
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.card-actions i:hover {
+    color: #333;
+}
+
+.card-actions a {
+    text-decoration: none; /* Remove underlines from links */
+    color: inherit; /* Use the icon color */
+}
+
+/* Optional: Prevent content shifting during hover */
+.main-container {
+  min-height: 50px; /* Set a minimum height, adjust as needed */
+}

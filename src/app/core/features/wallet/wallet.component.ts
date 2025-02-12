@@ -1,9 +1,9 @@
+import { PocketComponent } from './../pocket/pocket.component';
 import { Component, Input, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { WalletService } from '../../services/wallet.service';
 import { PocketsDialogComponent } from '../../../share/dialogs/pockets-dialog/pockets-dialog.component';
-//Material Design
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -13,6 +13,8 @@ import { Wallet } from '../../interfaces/wallet';
 import { EditWalletNameDialogComponent } from '../../../share/dialogs/edit-wallet-name-dialog/edit-wallet-name-dialog.component';
 import { ShareOptionsDialogComponent } from '../../../share/dialogs/share-options-dialog/share-options-dialog.component';
 import { User } from '../../interfaces/user';
+import { MatIconModule } from '@angular/material/icon';
+import { MovementsDialogComponent } from '../../../share/dialogs/movements-dialog/movements-dialog.component';
 
 @Component({
     selector: 'app-wallet',
@@ -20,20 +22,20 @@ import { User } from '../../interfaces/user';
     templateUrl: './wallet.component.html',
     styleUrls: ['./wallet.component.css'],
     imports: [CommonModule, MatTableModule, MatInputModule, RouterModule,
-        MatFormFieldModule, MatButtonModule, MatDialogModule]
+    MatFormFieldModule, MatButtonModule, MatDialogModule, MatIconModule, PocketComponent]
 })
 export class WalletComponent implements OnInit {
 
 
     @Input() wallet!: Wallet
     @Input() showAddPocketButton: boolean = true
-    pockets!: any
-    dataSource!: any
+    pockets!: any    
     router: Router = new Router;
     totalAmount!: number
     netoAmount!: number
     deleteFlag: boolean = true
     users: User[] = [];
+    //selectedWallet: Wallet | null = null
 
     constructor(
         private walletService: WalletService,
@@ -61,15 +63,14 @@ export class WalletComponent implements OnInit {
             const id = this.wallet._id
             this.walletService.getPocketsOfWallet(id).subscribe(
                 response => {
-                    this.pockets = response
-                    this.dataSource = new MatTableDataSource(this.pockets);
+                    this.pockets = response                    
                     this.getAmounts(this.pockets)
                 }
             )
         }
     }
 
-    displayedColumns: string[] = ['pocket', 'currency', 'amount', 'edit', 'delete'];
+   
 
     getAmounts(pockets: any) {
         this.totalAmount = 0;
@@ -89,11 +90,7 @@ export class WalletComponent implements OnInit {
 
         }
     }
-
-    applyFilter(event: Event) {
-        const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+ 
 
     openEditWalletNameDialog(wallet: Wallet) {
         const dialogRef = this.dialog.open(EditWalletNameDialogComponent, {
@@ -153,6 +150,23 @@ export class WalletComponent implements OnInit {
                 }                
             });
 
+    }
+
+    openAddMovementDialog(movement_type: string) {
+        const dialogRef = this.dialog.open(MovementsDialogComponent, {
+            data: {
+                wallet: this.wallet,
+                walletId: this.wallet ? this.wallet._id : null,
+                movement_type: movement_type
+            }
+        });
+        dialogRef.afterClosed().subscribe(
+            response => {
+                if (response) {
+                    alert("movement successfully added")
+                    this.router.navigateByUrl('/dashboard');
+                }
+            });
     }
 
 }

@@ -1,9 +1,39 @@
-/* Structure */
-table {
+.main-container {  
+    display: flex; /* Establece el contenedor como un contenedor flex */
+    flex-direction: column; /* Establece la dirección de los elementos hijos como columna */
+    align-items: center; /* Alinea los elementos hijos al centro */
+    padding: 20px; /* Añade un relleno alrededor del contenedor */ 
+    width: 90%; /* Establece un ancho del 80% */
+    margin: auto;
+    justify-content: center;
+    
+}
+
+.table {
+    margin: auto;    
+    
+}
+
+.create-button {    
+    align-self: flex-end; /* Alinea el botón al final de la línea flex */
+    margin: auto;
+    margin-top: 10px;    
+    width: 20vw;
+    
+}
+
+.create-button > button {
+    background-color: white;
+    padding: 2px 30px;
     width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+    font-size: small;
+    color: hsl(120, 2%, 47%);
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid hsl(120, 2%, 47%);
+}
+
+.create-button > button:hover {
+    background-color: rgb(6, 88, 6);
+    color: white;
+}

@@ -1,15 +1,114 @@
-/* Structure */
-table {
-    width: 100%;
-  }
+.main-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;    
   
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+}
 
-  td {
-    border: 1px black solid;
-     
-  }
+.top-bar {  
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  padding: 5px;
+  padding-bottom: 0%;
+  height: 10vh;
+  width: 95%;
+  margin: auto;
+  border-bottom: solid 1px lightgrey;
+  margin-top: 10px;;
+  margin-bottom: 25px;
+}
+
+.title{  
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  flex-grow: 1; 
+  color: grey;
+  font-weight: lighter; 
+  height: inherit; 
+}
+
+.title > li {
+  list-style-type: none;
+  text-align: left;  
+  padding-left: 15px;
   
+}
+
+.title > h2 {
+  padding: 5px;
+}
+
+
+.title-options {    
+  font-size: 1em;
+  display: flex;
+  gap: 20px;
+  height: inherit;
+  align-items: center;
+
+}
+
+i:hover {
+  color: blue;
+  font-size: 1.5em;
+}
+
+
+
+
+
+
+.pockets-container {
+  box-sizing: border-box;  
+  margin: auto;
+  width: 95%;    
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se acomoden en varias filas */
+  align-content: flex-start; /* Asegura que los elementos comiencen desde arriba */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+.pockets-container > div { 
+   width: 19%;
+   height: fit-content;
+   
+}
+
+.movements-options {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: auto;
+  justify-content: space-around;  
+  margin-top: 15px;
+  
+}
+
+.movements-options > button {
+box-sizing: border-box;
+width: 30%;
+padding: 2px;
+border-radius: 5px;
+outline: solid 1px rgb(166, 166, 218);
+color: grey;
+font-size: large;
+font-weight: bold;
+background-color: white;
+
+}
+
+.movements-options > button:hover {
+  background-color: #b7f1cf;
+  color: white;
+}
+
+
+
+
+
+

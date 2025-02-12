@@ -1,177 +1,188 @@
-<mat-form-field>
-  <mat-label>Search movements</mat-label>
-  <input matInput (keyup)="applyFilter($event)" #input>
-</mat-form-field>
-<table id="myTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Creator Column -->
-  <ng-container matColumnDef="user">
-    <th mat-header-cell *matHeaderCellDef>user
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item *ngFor="let user of users" (click)="applyUserFilter(user)">
-          {{ user.name }}
+
+<div class="movements-table">
+
+  <mat-form-field>
+    <mat-label>Search movements</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+  <table id="myTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+  
+    <!-- Creator Column -->
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef>user
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">
-      {{movement.user.name}} </td>
-  </ng-container>
-
-  <!-- Movement Type Column -->
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef>Type
-      <button mat-icon-button [matMenuTriggerFor]="typeMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #typeMenu="matMenu">
-        <button mat-menu-item *ngFor="let movementType of movementsType"
-          (click)="applyMovementTypeFilter(movementType)">
-          {{ movementType }}
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item *ngFor="let user of users" (click)="applyUserFilter(user)">
+            {{ user.name }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">
+        {{movement.user.name}} </td>
+    </ng-container>
+  
+    <!-- Movement Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type
+        <button mat-icon-button [matMenuTriggerFor]="typeMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">
-      {{ movement.type }} </td>
-  </ng-container>
-
-  <!-- Category Column -->
-  <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef> Category
-      <button mat-icon-button [matMenuTriggerFor]="categoryMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #categoryMenu="matMenu">
-        <button mat-menu-item *ngFor="let category of categories" (click)="applyCategoryFilter(category)">
-          {{ category.name }}
+        <mat-menu #typeMenu="matMenu">
+          <button mat-menu-item *ngFor="let movementType of movementsType"
+            (click)="applyMovementTypeFilter(movementType)">
+            {{ movementType }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">
+        {{ movement.type }} </td>
+    </ng-container>
+  
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Category
+        <button mat-icon-button [matMenuTriggerFor]="categoryMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">
-      {{movement.category?.name || '-'}} </td>
-  </ng-container>
-
-  <!-- Vendor Column -->
-  <ng-container matColumnDef="vendor">
-    <th mat-header-cell *matHeaderCellDef> vendor
-      <button mat-icon-button [matMenuTriggerFor]="vendorMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #vendorMenu="matMenu">
-        <button mat-menu-item *ngFor="let vendor of vendors" (click)="applyVendorFilter(vendor)">
-          {{ vendor.name }}
+        <mat-menu #categoryMenu="matMenu">
+          <button mat-menu-item *ngFor="let category of categories" (click)="applyCategoryFilter(category)">
+            {{ category.name }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">
+        {{movement.category?.name || '-'}} </td>
+    </ng-container>
+  
+    <!-- Vendor Column -->
+    <ng-container matColumnDef="vendor">
+      <th mat-header-cell *matHeaderCellDef> vendor
+        <button mat-icon-button [matMenuTriggerFor]="vendorMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement"> {{movement.vendor?.name || '-'}} </td>
-  </ng-container>
-
-  <!-- Currency Column -->
-  <ng-container matColumnDef="currency">
-    <th mat-header-cell *matHeaderCellDef> currency </th>
-    <td mat-cell *matCellDef="let movement"> {{movement.currency}}</td>
-  </ng-container>
-
-  <!-- Amount Column -->
-  <ng-container matColumnDef="amount">
-    <th mat-header-cell *matHeaderCellDef>amount</th>
-    <td mat-cell *matCellDef="let movement">{{movement.amount}}</td>
-  </ng-container>
-
-  <!-- Year Column -->
-  <ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef>year
-      <button mat-icon-button [matMenuTriggerFor]="yearMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #yearMenu="matMenu">
-        <button mat-menu-item *ngFor="let year of years" (click)="applyYearFilter(year)">
-          {{ year }}
+        <mat-menu #vendorMenu="matMenu">
+          <button mat-menu-item *ngFor="let vendor of vendors" (click)="applyVendorFilter(vendor)">
+            {{ vendor.name }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement"> {{movement.vendor?.name || '-'}} </td>
+    </ng-container>
+  
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef> currency </th>
+      <td mat-cell *matCellDef="let movement"> {{movement.currency}}</td>
+    </ng-container>
+  
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>amount</th>
+      <td mat-cell *matCellDef="let movement">{{movement.amount}}</td>
+    </ng-container>
+  
+    <!-- Year Column -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>year
+        <button mat-icon-button [matMenuTriggerFor]="yearMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
-  </ng-container>
-
-  <!-- Month Column -->
-  <ng-container matColumnDef="month">
-    <th mat-header-cell *matHeaderCellDef>month
-      <button mat-icon-button [matMenuTriggerFor]="monthMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #monthMenu="matMenu">
-        <button mat-menu-item *ngFor="let month of months" (click)="applyMonthFilter(month)">
-          {{ month }}
+        <mat-menu #yearMenu="matMenu">
+          <button mat-menu-item *ngFor="let year of years" (click)="applyYearFilter(year)">
+            {{ year }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
+    </ng-container>
+  
+    <!-- Month Column -->
+    <ng-container matColumnDef="month">
+      <th mat-header-cell *matHeaderCellDef>month
+        <button mat-icon-button [matMenuTriggerFor]="monthMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
-  </ng-container>
-
-  <!-- Date Column -->
-  <!-- <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>date
-      <button mat-icon-button [matMenuTriggerFor]="movementDateMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #movementDateMenu="matMenu">
-        <button mat-menu-item *ngFor="let movementDate of movementsData" (click)="applyMovementDateFilter(movementDate)">
-          {{ movementDate }}
+        <mat-menu #monthMenu="matMenu">
+          <button mat-menu-item *ngFor="let month of months" (click)="applyMonthFilter(month)">
+            {{ month }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
+    </ng-container>
+  
+    <!-- Date Column -->
+    <!-- <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>date
+        <button mat-icon-button [matMenuTriggerFor]="movementDateMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
-  </ng-container> -->
-
-  <!-- from pocket Column -->
-  <ng-container matColumnDef="fromPocket">
-    <th mat-header-cell *matHeaderCellDef>fromPocket</th>
-    <td mat-cell *matCellDef="let movement">{{movement.fromPocket?.name || '-'}}</td>
-  </ng-container>
-  <!-- to pocket Column -->
-  <ng-container matColumnDef="toPocket">
-    <th mat-header-cell *matHeaderCellDef>toPocket</th>
-    <td mat-cell *matCellDef="let movement">{{movement.toPocket?.name || '-' }}</td>
-  </ng-container>
-  <!-- Pocket Column -->
-  <ng-container matColumnDef="pocket">
-    <th mat-header-cell *matHeaderCellDef>pocket</th>
-    <td mat-cell *matCellDef="let movement">{{movement.pocket?.name || '-'}}</td>
-  </ng-container>
-
-  <!-- Wallet Column -->
-  <ng-container matColumnDef="wallet">
-    <th mat-header-cell *matHeaderCellDef>wallet
-      <button mat-icon-button [matMenuTriggerFor]="walletMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #walletMenu="matMenu">
-        <button mat-menu-item *ngFor="let wallet of wallets" (click)="applyWalletFilter(wallet)">
-          {{ wallet.name }}
+        <mat-menu #movementDateMenu="matMenu">
+          <button mat-menu-item *ngFor="let movementDate of movementsData" (click)="applyMovementDateFilter(movementDate)">
+            {{ movementDate }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">{{movement.date}}</td>
+    </ng-container> -->
+  
+    <!-- from pocket Column -->
+    <ng-container matColumnDef="fromPocket">
+      <th mat-header-cell *matHeaderCellDef>fromPocket</th>
+      <td mat-cell *matCellDef="let movement">{{movement.fromPocket?.name || '-'}}</td>
+    </ng-container>
+    <!-- to pocket Column -->
+    <ng-container matColumnDef="toPocket">
+      <th mat-header-cell *matHeaderCellDef>toPocket</th>
+      <td mat-cell *matCellDef="let movement">{{movement.toPocket?.name || '-' }}</td>
+    </ng-container>
+    <!-- Pocket Column -->
+    <ng-container matColumnDef="pocket">
+      <th mat-header-cell *matHeaderCellDef>pocket</th>
+      <td mat-cell *matCellDef="let movement">{{movement.pocket?.name || '-'}}</td>
+    </ng-container>
+  
+    <!-- Wallet Column -->
+    <ng-container matColumnDef="wallet">
+      <th mat-header-cell *matHeaderCellDef>wallet
+        <button mat-icon-button [matMenuTriggerFor]="walletMenu">
+          <mat-icon>arrow_drop_down</mat-icon>
         </button>
-      </mat-menu>
-    </th>
-    <td mat-cell *matCellDef="let movement">{{movement.wallet?.name || '-'}}</td>
-  </ng-container>
+        <mat-menu #walletMenu="matMenu">
+          <button mat-menu-item *ngFor="let wallet of wallets" (click)="applyWalletFilter(wallet)">
+            {{ wallet.name }}
+          </button>
+        </mat-menu>
+      </th>
+      <td mat-cell *matCellDef="let movement">{{movement.wallet?.name || '-'}}</td>
+    </ng-container>
+  
+    <!-- Notes Column -->
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>notes</th>
+      <td mat-cell *matCellDef="let movement ">{{movement.notes || '-'}}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  
+</div>
 
-  <!-- Notes Column -->
-  <ng-container matColumnDef="notes">
-    <th mat-header-cell *matHeaderCellDef>notes</th>
-    <td mat-cell *matCellDef="let movement ">{{movement.notes || '-'}}</td>
-  </ng-container>
+<div class="movement-options-buttons">
+  <button id="resetFilters" (click)="resetAllFilters()">reset filters</button>
+  <button id="deleteAllMovements" (click)="openDeleteAllMovementsDialog()">delete all movements</button>
+  <button (click)="generatePdfFromFrontend()">download pdf from frontend</button>
+  <button (click)="generatePdfFromBackend()">download pdf from backend</button>
+</div>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-  <!-- Row shown when there is no matching data. -->
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
-</table>
-<br>
-<button id="resetFilters" (click)="resetAllFilters()">reset filters</button>
-<button id="deleteAllMovements" (click)="openDeleteAllMovementsDialog()">delete all movements</button>
-<button (click)="generatePdfFromFrontend()">download pdf from frontend</button>
-<button (click)="generatePdfFromBackend()">download pdf from backend</button>
