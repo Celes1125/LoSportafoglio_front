@@ -1,0 +1,20 @@
+
+
+.manage-page {
+    margin: 50px;
+    display: flex;    
+    flex-direction: column;    
+    gap:25px;
+    align-items: center;
+    
+}
+
+.manage-page > button {
+    color: blue;
+    background-color: transparent;
+    border: 1px blue solid;
+    width: 100%;
+    min-height: 70px;
+    font-size: large;
+    cursor: pointer;
+}

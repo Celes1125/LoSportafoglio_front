@@ -1,0 +1,33 @@
+.reports-page {    
+    display: flex;  
+    flex-direction: column;    
+    width: 100%;
+    height: 75vh;
+   
+    
+}
+
+.reports-options-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+
+}
+
+.reports-options-buttons > button {
+    width: 100%;
+    background-color: transparent;
+    color:blue;
+    border: blue solid 1px;
+    min-height: 30px ;
+}
+
+.main-container {
+    margin: auto;
+    width: 100%;
+    height: 75vh;   
+    
+    
+
+}
