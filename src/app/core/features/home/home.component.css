@@ -5,8 +5,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    height: 90vh;    
     margin: auto;
 }
 .create .select {        
@@ -42,4 +41,58 @@
     text-align: center;
     
 }
+
+.create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    padding-top: 50px;
+    align-items: center;
+    height: 100%;
+    width: 50vw;
+    margin: auto;   
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+ 
+.home {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 90%;        
+    margin: auto;
+    
+}
+
+.create > button {
+    color: #8d8787;
+    font-size: 8vw;
+    font-weight: bolder;    
+    background-color: white;
+    border: 3px solid rgb(201, 201, 209);
+    border-radius: 5px;
+    width: 70%;
+    cursor: pointer;
+}
+
+.create {    
+    display: flex;
+    flex-direction: column;
+    padding-top: 25%;
+    justify-content: center;
+    align-content: flex-start;    
+    align-items: center;
+    height: 100%;
+    width: 90vw;
+    margin: auto;   
+    text-align: center;
+    font-size: 6vw;
+}
+    
+  }
+  
 

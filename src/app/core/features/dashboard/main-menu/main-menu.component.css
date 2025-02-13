@@ -55,3 +55,70 @@ li a, .dropbtn {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
+
+  @media screen and (max-width: 768px){
+    ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;   
+        background-color: cadetblue;
+        font-size: 1.5em;
+        height: 100%;        
+        line-height: 150%;
+        align-content: center;        
+
+    }
+    
+    li {
+        float: left;        
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+    li a:focus {
+        background-color: blue
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    
+    }
+    
+    li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+    
+    .dropdown-content a:hover{
+        font-size: small;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+  
+    
+  }
