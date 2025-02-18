@@ -1,21 +1,20 @@
 
 <div class="main-container">
 
-    <div class="reports-options-buttons">
-        <button id="movementsBtn">Movements</button>
-        <button id="graphicsBtn">Graphics</button>
-        <button id="archiveBtn">Archive</button>
-    </div>
-
+    <div class="reports-menu">
+        <ul>
+            <li id="movementsBtn">Movements</li>
+            <li id="graphicsBtn">Graphics</li>
+            <li id="archiveBtn">Archive</li>
+        </ul>        
+    </div>    
     
-    
-    <div class="main-content" #container>
+    <div class="content-container" #container>
 
-        <div #movements style="display: block">
-            <h1>
-                <app-movements-page></app-movements-page>
-            </h1>
+        <div #movements style="display: none">            
+            <app-movements-page></app-movements-page>         
         </div>
+
         <div #graphics style="display: none">
             <h1>Graphics</h1>
             <p>I am sorry but this page is on development, we hope to activate it soon</p>
@@ -25,8 +24,6 @@
             <h1>Archive</h1>
             <p>I am sorry but this page is on development, we hope to activate it soon</p>
         </div>
-
-
     </div>
 
 

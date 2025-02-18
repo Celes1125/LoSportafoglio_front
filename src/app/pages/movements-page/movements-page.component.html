@@ -1,14 +1,15 @@
 
 
-<div class="movements-table">
+<div class="main-container">
 
-  <mat-form-field>
-    <mat-label>Search movements</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input>
-  </mat-form-field>
-  <table id="myTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
-  
+  <div clasS="search-box">
+    <mat-form-field>
+      <mat-label>Search movements</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+  </div>  
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">   
     <!-- Creator Column -->
     <ng-container matColumnDef="user">
       <th mat-header-cell *matHeaderCellDef>user
@@ -175,14 +176,16 @@
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
   </table>
+
+  <div class="table-menu">
+    <button id="resetFilters" (click)="resetAllFilters()">reset filters</button>
+    <button id="deleteAllMovements" (click)="openDeleteAllMovementsDialog()">delete all movs</button>
+    <button (click)="generatePdfFromFrontend()">download pdf</button>
+    <button (click)="generatePdfFromBackend()">download pdf</button>
+  </div>
   
 </div>
 
-<div class="movement-options-buttons">
-  <button id="resetFilters" (click)="resetAllFilters()">reset filters</button>
-  <button id="deleteAllMovements" (click)="openDeleteAllMovementsDialog()">delete all movements</button>
-  <button (click)="generatePdfFromFrontend()">download pdf from frontend</button>
-  <button (click)="generatePdfFromBackend()">download pdf from backend</button>
-</div>
+
 
 

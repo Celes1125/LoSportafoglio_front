@@ -1,35 +1,74 @@
-.reports-page {    
-    display: flex;  
-    flex-direction: column;    
-    width: 100%;
-    height: 75vh;
-    
-   
-    
+.main-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 85vh; ;
+    width: 95vw;
+    margin: auto;    
+    padding: 10px;
+    position: relative;
 }
 
-.reports-options-buttons {
+.reports-menu {
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 5px;
-
+    align-items: center;
+    justify-content: center;
+    width: 100%;    
+    position: absolute;
+    top: 0;    
+    right: 0;
+    float: left;
+    height: 10%;
+    margin: auto;    
 }
 
-.reports-options-buttons > button {
+.reports-menu > ul {
+    box-sizing: border-box;
+    display: flex;    
+    flex-direction: row;
+    align-items: center;    
+    justify-content: center;
+    list-style-type: none;
     width: 100%;
-    background-color: transparent;
-    color:blue;
-    border: blue solid 1px;
-    min-height: 30px ;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+   
+   
 }
 
-.main-content {
+.reports-menu > ul > li {   
+    box-sizing: border-box; 
+    padding: 3vw;
+    width: 30%;
+    text-decoration: none;
+    border-bottom: 1px solid hsl(0, 6%, 10%);
+    text-align: center;
+    color: #645d5d;
+    font-size: 4vw;
+}
+
+.reports-menu > ul > li > a {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+}
+
+.content-container {
+    box-sizing: border-box;
+    display: flex;    
+    width: 95%;
+    height: 90%;
+    padding: 3vw;
     margin: auto;
-    width: 100%;
-    height: 75vh;   
-    overflow: auto;
-    
-    
+    justify-content: center;
+    align-content: center;    
+    position: absolute;
+    bottom: 0;
 
 }
+
