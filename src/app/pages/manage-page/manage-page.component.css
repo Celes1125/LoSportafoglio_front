@@ -1,15 +1,20 @@
 
 
-.manage-page {
-    margin: 50px;
+.main-container {    
     display: flex;    
+    width: 90vw;
+    height: 90vh;
     flex-direction: column;    
-    gap:25px;
+    gap:5vh;
     align-items: center;
+    justify-items: center;
+    padding: 5vw;
+    padding-top: 15vh ;
+    margin: auto;
     
 }
 
-.manage-page > button {
+.main-container > button {
     color: blue;
     background-color: transparent;
     border: 1px blue solid;
@@ -17,4 +22,5 @@
     min-height: 70px;
     font-size: large;
     cursor: pointer;
+    border-radius: 5vw;
 }

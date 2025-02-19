@@ -4,19 +4,27 @@
   <div class="top-bar">
     <div class="title">
       <h2>{{wallet.name}}</h2>
-      <li>total amount: {{totalAmount}}</li>
-      <li>total amount without main incomes: {{netoAmount}} </li>
-
+      <li id="totalDesk">all pockets: {{totalAmount}}</li>
+      <li id="netoDesk">main pocket out: {{netoAmount}} </li>
     </div>
 
     <div class="title-options">
       <i class="fa-solid fa-pen fa-lg" (click)="openEditWalletNameDialog(wallet)"></i>
       <i class="fa-solid fa-share-nodes fa-lg" (click)="openShareOptionsDialog(wallet)"></i>
-      <i class="fa-solid fa-people-group fa-lg"></i>
+      <i id="members-icon" class="fa-solid fa-people-group fa-lg"></i>
+      <div class="wallet-friends">        
+        <ul>Wallet's members:
+            @for (user of users; track $index) {
+            <li>{{user.name}}</li>
+          }
+        </ul>
+       
+        
+      </div>
     </div>
 
-  </div>
-
+  </div> 
+ 
   <div class="pockets-container">
     @for (pocket of pockets; track $index) {
     <div>
@@ -30,11 +38,17 @@
       
     </div> 
   </div>
+
+  
   <div class="movements-options">
     <button (click)="openAddMovementDialog('income')">Income</button>
     <button (click)="openAddMovementDialog('expense')">Expense</button>
     <button (click)="openAddMovementDialog('transfer')">Transfer</button>
   </div>
+</div>
+<div class="mobileAmounts">
+  <li id="totalMobile">all pockets: {{totalAmount}}</li>
+  <li id="netoMobile">main pocket out: {{netoAmount}} </li>
 </div>
 
 }

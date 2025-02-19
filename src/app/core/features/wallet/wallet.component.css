@@ -1,9 +1,187 @@
+/*styles for the wallet component*/
+/*basic styles for mobile devices*/
+
 .main-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-content: center;
+  
+
+}
+
+#totalDesk, #netoDesk {
+  display:none
+}
+
+.mobileAmounts {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  justify-content: space-around;
+  color: grey;
+  font-weight: lighter;
+  height: inherit;
+  padding-left:2vw;
+  padding-top: 0;
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.mobileAmounts > li {
+  display: flex;
+  list-style-type: none;
+  padding: 5px;
+  font-size: 4.2vw;
+}
+
+.top-bar {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  padding-bottom: 0%;
+  height: 5vh;
+  width: 95%;
+  margin: auto;  
+  border-bottom: solid 1px lightgrey;
+  margin-top: 10px;  
+  margin-bottom: 5px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  flex-grow: 1;
+  color: grey;
+  font-weight: lighter;
+  height: inherit;
+
+}
+
+
+
+.title-options {
+  font-size: 1em;
+  display: flex;
+  gap: 20px;
+  height: inherit;
+  align-items: center;
+  position: relative;
+
+}
+
+.wallet-friends{
+  box-sizing: border-box;
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  background-color: white; 
+  border: #b7f1cf solid 1px;   
+  padding-left:3px;
+  z-index: 100;
+}
+
+.wallet-friends > ul {
+  list-style-position: inside;
+  text-align: left;
+  padding: 5px;
+  z-index: 10;
+}
+
+#members-icon:hover + .wallet-friends {
+  display: block;
+} 
+
+i:hover {
+  color: blue;
+  font-size: 1.5em;
+}
+
+.pockets-container {
+  padding-top: 20px;
+  box-sizing: border-box;
+  margin: auto;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* Permite que los elementos se acomoden en varias filas */
+  align-content: flex-start;
+  /* Asegura que los elementos comiencen desde arriba */
+  gap: 20px;
+  /* Espacio entre los elementos */
+}
+
+.pockets-container>div {
+  width: 45%;
+  height: fit-content;
+
+}
+
+.movements-options {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: auto;
+  justify-content: space-around;
+  margin-top: 15px;
+
+}
+
+.movements-options>button {
+  box-sizing: border-box;
+  width: 30%;
+  padding: 2px;
+  border-radius: 5px;
+  outline: solid 1px rgb(166, 166, 218);
+  color: grey;
+  font-size: large;
+  font-weight: bold;
+  background-color: white;
+
+}
+
+.movements-options>button:hover {
+  background-color: #b7f1cf;
+  color: white;
+}
+
+.add-pocket > i {
+  font-size: 8vw;  
+  text-align: center;  
+  color: blue;
+}
+
+.add-pocket {
+  width: 8vw;
+  padding: 0;
+  display: flex;  
+ justify-content: center;
+}
+
+
+/*styles for desktop*/
+@media (min-width: 768px) {       
+    .main-container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;    
   
+}
+
+#totalDesk, #netoDesk {
+  display:inline-block
+}
+
+.mobileAmounts {
+  display: none;
 }
 
 .top-bar {  
@@ -56,26 +234,22 @@ i:hover {
   color: blue;
   font-size: 1.5em;
 }
-
-
-
-
-
-
 .pockets-container {
   box-sizing: border-box;  
   margin: auto;
   width: 95%;    
   display: flex;
   flex-wrap: wrap; /* Permite que los elementos se acomoden en varias filas */
-  align-content: flex-start; /* Asegura que los elementos comiencen desde arriba */
-  gap: 10px; /* Espacio entre los elementos */
+align-content: flex-start;
+/* Asegura que los elementos comiencen desde arriba */
+gap: 10px;
+/* Espacio entre los elementos */
 }
 
-.pockets-container > div { 
-   width: 19%;
-   height: fit-content;
-   
+.pockets-container>div {
+  width: 19%;
+  height: fit-content;
+
 }
 
 .movements-options {
@@ -84,31 +258,35 @@ i:hover {
   flex-direction: row;
   width: 95%;
   margin: auto;
-  justify-content: space-around;  
+  justify-content: space-around;
   margin-top: 15px;
-  
-}
-
-.movements-options > button {
-box-sizing: border-box;
-width: 30%;
-padding: 2px;
-border-radius: 5px;
-outline: solid 1px rgb(166, 166, 218);
-color: grey;
-font-size: large;
-font-weight: bold;
-background-color: white;
 
 }
 
-.movements-options > button:hover {
+.movements-options>button {
+  box-sizing: border-box;
+  width: 30%;
+  padding: 2px;
+  border-radius: 5px;
+  outline: solid 1px rgb(166, 166, 218);
+  color: grey;
+  font-size: large;
+  font-weight: bold;
+  background-color: white;
+
+}
+
+.movements-options>button:hover {
   background-color: #b7f1cf;
   color: white;
 }
 
+.add-pocket > i {
+  font-size: 3vw;  
+  text-align: center;  
+  color: blue;
+}
 
 
 
-
-
+}

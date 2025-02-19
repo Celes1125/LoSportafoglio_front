@@ -1,37 +1,37 @@
+/*styles for dashboard component*/
+/*basic style for mobile*/
+
 .main-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-}
-
-.dashboard-container {  
-  position: relative;
-  height: 90vh;
-  width: 90vw;
   display: flex;
-  flex-wrap: nowrap;  
-  flex-direction: column;  
-  border: solid 1px rgba(194, 190, 190, 0.582);
-  outline-style: solid;
-  outline-width: 5px;
-  outline-color: rgb(105, 100, 100, 0.3);
-  outline-offset: 5px;
-}
-
-.main-menu {  
-  position: absolute;
-  top:0;
-  height: 10%;
-  width: 100%; 
-}
-
-.content-container {  
+  flex-direction: column;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
-  position: absolute;
-  top:10%;
-  bottom:0%;
-  overflow: auto;  
+  margin: auto;
+  justify-content: flex-start;
+  border: solid 5px hsla(210, 4%, 35%, 0.58); 
+  
 }
+
+.main-menu {   
+  display: flex;
+  height: 10%;  
+  width: 100%;
+  box-sizing: border-box;  
+  justify-content: center;
+  background-color: rgb(103, 180, 231);
+   
+}
+
+.content-container {   
+  display: flex;  
+  box-sizing: border-box;
+  height: 90%;   
+  width: 100%;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+}
+
+
+

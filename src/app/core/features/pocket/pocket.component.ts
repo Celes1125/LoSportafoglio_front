@@ -25,8 +25,8 @@ export class PocketComponent implements OnInit {
   }
 
   sliceNames(this: any) {
-    if (this.pocket.name.length > 10) {
-      this.pocket.name = this.pocket.name.slice(0, 10) + '...'
+    if (this.pocket.name.length > 20) {
+      this.pocket.name = this.pocket.name.slice(0, 20) + '...'
     }
 
   }

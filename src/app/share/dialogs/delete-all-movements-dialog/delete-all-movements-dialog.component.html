@@ -1,14 +1,16 @@
+<div class="main-container">
 
-<h2 mat-dialog-title>Delete all movements</h2>
-<mat-dialog-content class="mat-typography">
-  <h1>your reports are based on your movements history</h1>
-  <h1>Please, make sure to download your pdf reports first</h1>
-  <h1>So, are you really sure about to delete all your movements recorded?</h1>
- 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>CANCEL</button>
-  <button mat-button mat-dialog-close>GO TO REPORTS PAGE</button>
-  <button type="submit"[mat-dialog-close]="true" cdkFocusInitial 
-  (click)="deleteAllMovements()">YES, PLEASE DELETE MY MOVEMENTS HISTORY</button>
-</mat-dialog-actions>
+  <h1 class="title" mat-dialog-title>Delete all movements</h1>
+  <mat-dialog-content class="mat-typography">
+    <p>Your reports are based on your movements history. Please, make sure to download your pdf reports first</p>
+    <p>So, are you really sure about to delete all your movements recorded?</p>   
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button mat-dialog-close>GO TO REPORTS PAGE</button>
+    <button type="submit"[mat-dialog-close]="true" cdkFocusInitial 
+    (click)="deleteAllMovements()">YES, PLEASE DELETE MY MOVEMENTS HISTORY</button>
+  </mat-dialog-actions>
+  
+</div>
