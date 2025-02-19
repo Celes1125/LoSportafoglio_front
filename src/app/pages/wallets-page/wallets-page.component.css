@@ -18,18 +18,22 @@
 }
 
 .table-container {
-    width:100%;
+    display: block;
+    overflow: visible;
+    width:90vw;
 }
 
 table {
-    width:100%
+    width:50vw;
 }
 
 .create-button {    
+    display: flex;
+    justify-content: center;
     width: 100%;
     position: fixed;
-        bottom: 5%;                
-        font-size: 2vw;
+    bottom: 10%;                
+    font-size: 2vw;
     margin: auto;
 }
 
@@ -46,11 +50,37 @@ table {
 
 /*desktop style*/
 @media (min-width: 768px) {    
+    .main-container {  
+        box-sizing: border-box;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        width: 95%; 
+        height: 80%;
+        margin: auto;
+        justify-content: flex-start;
+        position: relative;
+        overflow: auto;
+        background-color: rgba(rgba(7, 67, 102, 0.377)) ;
+        
+        
+       
+    }
+    
+    .table-container {
+        display: block;
+        overflow: visible;
+        width:100%;
+    }
+    
+    table {
+        width:50vw;
+    }
     .create-button {    
         width: 25%;
         position: fixed;
-            bottom: 7%;  
-            right: 5%;              
+        bottom: 7%;  
+        right: 5%;              
             
         
     }
@@ -76,6 +106,7 @@ table {
         font-size: 1.3vw;
         color: white;
     }
+    
          
 }
 

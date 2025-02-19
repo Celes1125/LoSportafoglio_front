@@ -39,3 +39,8 @@ button {
     background-color: white;
 }
 
+/*desktop style*/
+@media (min-width: 768px) {       
+    
+         
+}

@@ -1,31 +1,39 @@
 @if (vendor && deleteFlag==undefined) {
-<h2 mat-dialog-title>Edit vendor</h2>
-<form [formGroup]="editForm">
-    <mat-dialog-content class="mat-typography">
-        Name
-        <input name="editname" formControlName="editname">
-    </mat-dialog-content>
+    <div class="main-container">
 
-    <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button (click)="editVendor()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
-    </mat-dialog-actions>
-</form>
+        <h2 class="title" mat-dialog-title>Edit vendor</h2>
+        <form [formGroup]="editForm">
+            <mat-dialog-content class="mat-typography">
+                Name
+                <input name="editname" formControlName="editname">
+            </mat-dialog-content>
+        
+            <mat-dialog-actions align="end">
+                <button mat-button mat-dialog-close>Cancel</button>
+                <button (click)="editVendor()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
 
 
 }@else if (vendor && deleteFlag) {
-<h2 mat-dialog-title>Delete vendor</h2>
-<mat-dialog-content class="mat-typography">
-    <p>Are you sure about delete the vendor {{vendor.name}}?</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button (click)="deleteVendor()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>DELETE</button>
-</mat-dialog-actions>
+    <div class="main-container">
+        <h2 class="title" mat-dialog-title>Delete vendor</h2>
+        <mat-dialog-content class="mat-typography">
+            <p>Are you sure about delete the vendor {{vendor.name}}?</p>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button (click)="deleteVendor()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>DELETE</button>
+        </mat-dialog-actions>
+    </div>
+
 
 }@else if (vendor==undefined && deleteFlag==undefined){
+    <div class="main-container">
+        
 <form [formGroup]="form">
-    <h2 mat-dialog-title>Create new vendor</h2>
+    <h2 class="title"  mat-dialog-title>Create new vendor</h2>
 
     <mat-dialog-content class="mat-typography">
         <label>Name
@@ -42,4 +50,5 @@
     </mat-dialog-actions>
 </form>
 
+    </div>
 }

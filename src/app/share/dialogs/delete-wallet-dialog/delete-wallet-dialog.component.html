@@ -1,11 +1,11 @@
-<div >
-    <h2 mat-dialog-title>Delete {{wallet.name}}</h2>
+<div class="main-container">
+    <h2 class="title" mat-dialog-title>Delete {{wallet.name}}</h2>
     <mat-dialog-content class="mat-typography">
-      <h1>Are you sure about deleting this wallet?</h1>
+      <p>Are you sure about deleting this wallet?</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>CANCEL</button>
-      <button type="submit" [mat-dialog-close]="true" cdkFocusInitial (click)="logic_delete()">YES, PLEASE DELETE</button>
+      <button type="submit" [mat-dialog-close]="true" cdkFocusInitial (click)="logic_delete()">YES, PLEASE DELETE IT</button>
     </mat-dialog-actions>
   </div>
   
