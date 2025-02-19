@@ -83,12 +83,14 @@
   background-color: white; 
   border: #b7f1cf solid 1px;   
   padding-left:3px;
+  z-index: 100;
 }
 
 .wallet-friends > ul {
   list-style-position: inside;
   text-align: left;
   padding: 5px;
+  z-index: 10;
 }
 
 #members-icon:hover + .wallet-friends {
