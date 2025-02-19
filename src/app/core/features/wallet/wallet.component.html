@@ -11,7 +11,16 @@
     <div class="title-options">
       <i class="fa-solid fa-pen fa-lg" (click)="openEditWalletNameDialog(wallet)"></i>
       <i class="fa-solid fa-share-nodes fa-lg" (click)="openShareOptionsDialog(wallet)"></i>
-      <i class="fa-solid fa-people-group fa-lg"></i>
+      <i id="members-icon" class="fa-solid fa-people-group fa-lg"></i>
+      <div class="wallet-friends">        
+        <ul>Wallet's members:
+            @for (user of users; track $index) {
+            <li>{{user.name}}</li>
+          }
+        </ul>
+       
+        
+      </div>
     </div>
 
   </div> 

@@ -1,5 +1,6 @@
 /*styles for the wallet component*/
 /*basic styles for mobile devices*/
+
 .main-container {
   box-sizing: border-box;
   display: flex;
@@ -69,8 +70,30 @@
   gap: 20px;
   height: inherit;
   align-items: center;
+  position: relative;
 
 }
+
+.wallet-friends{
+  box-sizing: border-box;
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  background-color: white; 
+  border: #b7f1cf solid 1px;   
+  padding-left:3px;
+}
+
+.wallet-friends > ul {
+  list-style-position: inside;
+  text-align: left;
+  padding: 5px;
+}
+
+#members-icon:hover + .wallet-friends {
+  display: block;
+} 
 
 i:hover {
   color: blue;
