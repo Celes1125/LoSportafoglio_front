@@ -15,6 +15,8 @@ import { ShareOptionsDialogComponent } from '../../../share/dialogs/share-option
 import { User } from '../../interfaces/user';
 import { MatIconModule } from '@angular/material/icon';
 import { MovementsDialogComponent } from '../../../share/dialogs/movements-dialog/movements-dialog.component';
+import { CalcService } from '../../services/calc.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-wallet',
@@ -31,14 +33,15 @@ export class WalletComponent implements OnInit {
     @Input() showAddPocketButton: boolean = true
     pockets!: any    
     router: Router = new Router;
-    totalAmount!: number
-    netoAmount!: number
+    totalAmount!: string
+    netoAmount!: string
     deleteFlag: boolean = true
     users: User[] = [];
     //selectedWallet: Wallet | null = null
 
     constructor(
         private walletService: WalletService,
+        private calcService : CalcService,
         public dialog: MatDialog,
 
     ) { }
@@ -47,6 +50,7 @@ export class WalletComponent implements OnInit {
     ngOnInit(): void {
         this.getPocketsOfWallet()
         this.getUsersOfTheWallet()
+        this.getWalletAmounts()
 
     }
 
@@ -55,7 +59,6 @@ export class WalletComponent implements OnInit {
             this.users = this.wallet.users
         }
     }
-    
 
 
     getPocketsOfWallet() {
@@ -64,33 +67,26 @@ export class WalletComponent implements OnInit {
             this.walletService.getPocketsOfWallet(id).subscribe(
                 response => {
                     this.pockets = response                    
-                    this.getAmounts(this.pockets)
+                    this.getWalletAmounts()
                 }
             )
         }
     }
-
    
-
-    getAmounts(pockets: any) {
-        this.totalAmount = 0;
-        this.netoAmount = 0;
-
-        if (pockets && pockets.length > 0) {
-            for (let i = 0; i < pockets.length; i++) {
-                // Sumar el valor de la propiedad amount de cada pocket al totalAmount
-                this.totalAmount += pockets[i].amount;
-            }
-            const mainPocket = pockets[0]
-
-            if (mainPocket) {
-                this.netoAmount = this.totalAmount - mainPocket.amount
-            }
-
-
-        }
-    }
- 
+    getWalletAmounts(){
+        if (this.wallet._id){
+            const id = this.wallet._id;
+            this.calcService.getWalletAmounts(id).subscribe(response => {
+                if(response){
+                    this.totalAmount = response.totalAmount;
+                    this.netoAmount = response.netoAmount;
+                    console.log('AMOUNTS: ', response)
+                }
+                
+            })
+        }   
+        
+    } 
 
     openEditWalletNameDialog(wallet: Wallet) {
         const dialogRef = this.dialog.open(EditWalletNameDialogComponent, {

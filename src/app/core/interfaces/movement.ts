@@ -10,7 +10,7 @@ export interface Movement {
     _id: string,
     type: MovementType,
     date: Date,
-    amount: number,
+    amount: string,
     currency: CurrencyType,
     notes: string | null
     user: User,

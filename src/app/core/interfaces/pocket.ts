@@ -4,7 +4,7 @@ import { Wallet } from "./wallet";
 export interface Pocket {    
     _id: string,
     name: string,
-    amount: number,
+    amount: string,
     currency: CurrencyType,
     creationDate: Date | null | undefined,
     lastModified: Date | null | undefined,

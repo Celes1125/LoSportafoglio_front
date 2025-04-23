@@ -50,40 +50,7 @@ export class MovementService {
         console.log('create movements subscription ended')
       })
     )
-  }
-  //add an income or a expense 
-  addIncomeOrExpense(movement: any) {
-    return this.create(movement).pipe(
-      tap((createdMovement) => console.log('created movement: ', createdMovement)),
-      switchMap(() => this._pocketService.getById(movement.pocket)),
-      map((pocket: Pocket) => {
-        const amount = pocket.amount;
-        return amount
-      }),
-      catchError(error => {
-        console.error('getting pocket error:', error);
-        return of(null)
-      }),
-      map((amount: any) => {
-        if (amount !== null && amount !== undefined) { // checking if amount is null or undefined
-          const newAmount = (movement.type === 'in') ? amount + movement.amount : amount - movement.amount;
-          return { amount, newAmount };
-        } else {
-          // Handle cases where amount is null (either throw an error or return a default value)
-          return { amount: null, newAmount: null }; // null values return example
-        }
-      }),
-      switchMap(({ newAmount }) => {
-        return this._pocketService.edit({
-          _id: movement.pocket,
-          amount: newAmount,
-          lastModified: new Date()
-        });
-      }),
-      catchError(error => error)
-    )
-
-  }
+  }  
   //delete movements by pocket
   deleteMovementsByPocket(id: string) {
     const url = this.url + "byPocketId/" + id

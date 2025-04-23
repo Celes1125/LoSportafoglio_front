@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { CalcService } from '../../../core/services/calc.service';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class MovementsDialogComponent implements OnChanges {
   firstAmount: any;
   router: Router = new Router;
   movement_type: string
+  
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -48,7 +50,7 @@ export class MovementsDialogComponent implements OnChanges {
     private _vendorsService: VendorService,
     private _walletService: WalletService,
     private _movementsService: MovementService,
-    private _pocketService: PocketService,
+    private _calcService: CalcService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
 
@@ -64,20 +66,20 @@ export class MovementsDialogComponent implements OnChanges {
       category: ["", [Validators.required]],
       vendor: ["", [Validators.required]],
       pocket: ["", [Validators.required]],
-      amount: [0, [Validators.required]]
+      amount: ["0", [Validators.required]]
     });
 
     this.expenseForm = this._formBuilder.group({
       category: ["", [Validators.required]],
       vendor: ["", [Validators.required]],
       pocket: ["", [Validators.required]],
-      amount: [0, [Validators.required]]
+      amount: ["0", [Validators.required]]
     });
 
     this.transferForm = this._formBuilder.group({
       fromPocket: ["", [Validators.required]],
       toPocket: ["", [Validators.required]],
-      amount: [0, [Validators.required]],
+      amount: ["0", [Validators.required]],
       notes: ["", [Validators.required]]
     })
 
@@ -136,7 +138,8 @@ export class MovementsDialogComponent implements OnChanges {
           wallet: this.wallet._id
         };
         console.log("INCOME MOVEMENT: ", movement);
-        this._movementsService.addIncomeOrExpense(movement).subscribe(response => response)
+        this._movementsService.create(movement).subscribe(response => response)
+        this._calcService.refreshPockets(movement).subscribe(response => response)
         break;
 
       case 'expense':
@@ -153,7 +156,8 @@ export class MovementsDialogComponent implements OnChanges {
           wallet: this.wallet._id
         };
         console.log("EXPENSE MOVEMENT: ", movement);
-        this._movementsService.addIncomeOrExpense(movement).subscribe(response => response)
+        this._movementsService.create(movement).subscribe(response => response)
+        this._calcService.refreshPockets(movement).subscribe(response => response)
         break;
 
       case 'transfer':
@@ -172,7 +176,7 @@ export class MovementsDialogComponent implements OnChanges {
         console.log("TRANSFER MOVEMENT: ", movement);
 
         this._movementsService.create(movement).subscribe(response => response)
-        this._pocketService.refreshPocketsOfTransfers(movement)
+        this._calcService.refreshPockets(movement).subscribe(response => response)
         break;
 
       default:
