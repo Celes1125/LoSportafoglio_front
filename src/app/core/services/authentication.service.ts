@@ -21,7 +21,7 @@ export class AuthenticationService {
         if (response && response.token) {
           alert('login successfull');
           //sending token to local storage
-          localStorage.setItem('token', response.token);
+          localStorage.setItem('token', response.token);                    
         } else if (response.message == "wrong password") {
           alert('wrong user or password')
         } else {
@@ -36,13 +36,11 @@ export class AuthenticationService {
         console.log('Authentication subscription ended');
       })
     );
-  }
-
+  }  
   //login check
   isLogged() {
     return !!localStorage.getItem('token')
-  }
-  
+  }    
   // get user id
 getUserId(): Observable<any> {
   const token = localStorage.getItem('token');

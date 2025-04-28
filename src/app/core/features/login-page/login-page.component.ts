@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   
   selector: 'app-login-page',
@@ -23,6 +24,7 @@ export class LoginPageComponent {
     private _snackbar: MatSnackBar,
     private userService: UserService,
     private authenticationService: AuthenticationService,
+    
   ) {
     //sign up form builder
     this.form = this._formBuilder.group({
@@ -82,7 +84,7 @@ export class LoginPageComponent {
     const user = this.form.value;
     this.userService.create(user).subscribe(
       response => {
-        if (response) {
+        if (response) {          
           alert('sign up successfull, now yo can login')
         }
       })
@@ -96,12 +98,12 @@ export class LoginPageComponent {
     const password = this.loginForm.value.password;
     this.authenticationService.login(email, password).subscribe(
       response => {
-        if (response) {
+        if (response) {          
           this.router.navigateByUrl('/dashboard');
         }
       }
     )
-  }
+  }  
 
   //snackbar method message configuration
   openSnackBar(message: string) {

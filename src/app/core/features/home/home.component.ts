@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { WalletComponent } from '../wallet/wallet.component';
 import { WalletService } from '../../services/wallet.service';
-import { MovementsDialogComponent } from '../../../share/dialogs/movements-dialog/movements-dialog.component';
 import { WalletsPageComponent } from '../../../pages/wallets-page/wallets-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +12,8 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { Wallet } from '../../interfaces/wallet';
 import { EmptyError, lastValueFrom, of } from 'rxjs';
 import { CreateWalletDialogComponent } from '../../../share/dialogs/create-wallet-dialog/create-wallet-dialog.component';
+import { AuthenticationService } from '../../services/authentication.service';
+
 
 @Component({
     selector: 'app-home',
@@ -24,6 +25,7 @@ import { CreateWalletDialogComponent } from '../../../share/dialogs/create-walle
 export class HomeComponent implements OnInit, AfterViewInit {
     router: Router = new Router()
     wallets!: Wallet[]  
+    userId! : string 
     selectedWallet: Wallet | null = null
     @ViewChild('createWallet') createWalletElement!: ElementRef
     @ViewChild('selectWallet') selectWalletElement!: ElementRef
@@ -32,8 +34,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     constructor(
         public dialog: MatDialog,
         public walletService: WalletService,
-        public sharedService: SharedService
-    ) { }
+        public sharedService: SharedService,        
+        private authService: AuthenticationService,        
+    ) {       
+        this.authService.getUserId().subscribe(response => response)
+        
+    }
 
     async ngOnInit(): Promise<any> {
         console.log('OnInit')
@@ -57,7 +63,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
             }
         })
     }
-
     ngAfterViewInit(): void {
         console.log('afterViewInit')
         console.log('createWalletElement: ', this.createWalletElement)
@@ -66,7 +71,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.displayHomeOptions()
 
     }
-
     displayHomeOptions() {
         if (this.wallets?.length >= 1 && this.selectedWallet != null) {
             this.showingWalletElement.nativeElement.style = "display:block"
@@ -78,7 +82,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
             this.createWalletElement.nativeElement.style = "display:block"
         }
     }
-
     openCreateWalletDialog() {
         const dialogRef = this.dialog.open(CreateWalletDialogComponent, {
             data: { }

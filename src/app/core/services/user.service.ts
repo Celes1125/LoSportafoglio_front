@@ -14,7 +14,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   // Crear usuario
-  public create(user: User): Observable<any> {
+  public create(user: any): Observable<any> {    
     return this.httpClient.post(this.url, user);
   }
 
@@ -34,4 +34,11 @@ export class UserService {
     // Realiza la solicitud HTTP GET
     return this.httpClient.get<User>(`${this.url}email`, { params });
   }
+
+  // Obtener usuario por id
+  public getUserById(userId: string): Observable<User> {    
+    return this.httpClient.get<User>(`${this.url}${userId}`);
+  }
+
+  
 }
