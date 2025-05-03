@@ -3,8 +3,8 @@
     <mat-label>Search your categories</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="¿name category?" #input>
 </mat-form-field> -->
-
-<table class="table-container" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="table-container">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
@@ -46,9 +46,11 @@
     </tr>-->
 
 </table>
+</div>
 
 <div class="create-button">
     <button (click)="openCategoriesDialog()">create new category</button>
 </div>
+
 </div>
 

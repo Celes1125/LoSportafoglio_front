@@ -1,4 +1,4 @@
-/*styles for wallets page*/
+/*styles for vendors page*/
 /*basic styles for mobile*/
 .main-container {  
     box-sizing: border-box;
@@ -9,22 +9,20 @@
     height: 80%;
     margin: auto;
     justify-content: flex-start;
-    position: relative;
-    overflow: auto;
-    background-color: rgba(rgba(7, 67, 102, 0.377)) ;
-    
-    
-   
+    position: relative;    
+    background-color: rgba(rgba(7, 67, 102, 0.377)) ;   
 }
 
 .table-container {
-    display: block;
-    overflow: visible;
-    width:90vw;
+    display: block;          
+    height: 50vh; 
+    
+
 }
 
-table {
-    width:50vw;
+table {    
+    height: 50vh;   
+    overflow: auto; 
 }
 
 .create-button {    
@@ -59,23 +57,22 @@ table {
         height: 80%;
         margin: auto;
         justify-content: flex-start;
-        position: relative;
-        overflow: auto;
+        position: relative;        
         background-color: rgba(rgba(7, 67, 102, 0.377)) ;
-        
-        
-       
+        overflow: scroll;
     }
     
     .table-container {
-        display: block;
-        overflow: visible;
-        width:100%;
-    }
+        display: block;  
+        height: 50vh; 
+    } 
     
     table {
-        width:50vw;
+        height: 50vh;   
+    overflow: auto; 
+
     }
+    
     .create-button {    
         width: 25%;
         position: fixed;
