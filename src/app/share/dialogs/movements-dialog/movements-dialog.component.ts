@@ -66,14 +66,16 @@ export class MovementsDialogComponent implements OnChanges {
       category: ["", [Validators.required]],
       vendor: ["", [Validators.required]],
       pocket: ["", [Validators.required]],
-      amount: ["0", [Validators.required]]
+      amount: ["0", [Validators.required]],
+      notes: ["", [Validators.required]]
     });
 
     this.expenseForm = this._formBuilder.group({
       category: ["", [Validators.required]],
       vendor: ["", [Validators.required]],
       pocket: ["", [Validators.required]],
-      amount: ["0", [Validators.required]]
+      amount: ["0", [Validators.required]],
+      notes: ["", [Validators.required]]
     });
 
     this.transferForm = this._formBuilder.group({
@@ -132,10 +134,11 @@ export class MovementsDialogComponent implements OnChanges {
           pocket: this.incomeForm.value.pocket,
           currency: 'euro',
           amount: this.incomeForm.value.amount,
-          notes: "",
+          notes: this.incomeForm.value.notes,
           fromPocket: null,
           toPocket: null,
           wallet: this.wallet._id
+          
         };
         console.log("INCOME MOVEMENT: ", movement);
         this._movementsService.create(movement).subscribe(response => response)
@@ -150,10 +153,11 @@ export class MovementsDialogComponent implements OnChanges {
           pocket: this.expenseForm.value.pocket,
           currency: 'euro',
           amount: this.expenseForm.value.amount,
-          notes: "",
+          notes: this.expenseForm.value.notes,
           fromPocket: null,
           toPocket: null,
-          wallet: this.wallet._id
+          wallet: this.wallet._id,
+          
         };
         console.log("EXPENSE MOVEMENT: ", movement);
         this._movementsService.create(movement).subscribe(response => response)
