@@ -1,124 +1,99 @@
-
 .main-container {
-    box-sizing: border-box; 
     display: flex;
     flex-direction: column;
     background-color: white;
-    box-sizing: border-box; 
-}
-.title{
-    background-color: #a7ddd9;
-    text-align: center;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100vh;
 }
 
-select {
-    box-sizing: border-box; 
-    display:flex;
-    width: 95%;
-    font-size: 1em;
-    padding: 1em;
-    margin-top: 1em;
-    margin: auto;
+/* Título y labels con texto centrado */
+.title,
+label {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
 }
-input {
-    box-sizing: border-box; 
-    width: 50%;    
+
+/* Contenedor individual de cada campo */
+div {
+    margin-bottom: 1rem;
+}
+
+/* Inputs y textareas centrados */
+input,
+textarea {
+    width: 85%;
+    margin: 0 auto;
     display: block;
+    font-size: 0.95em;
+    padding: 0.6em;
     border: none;
     border-bottom: 1px solid hsl(0, 3%, 6%);
-    padding: 2vw;
-    box-sizing: border-box;
     text-align: center;
-    font-size: 1.5em;
-    margin: auto;
-   
+    box-sizing: border-box;
 }
 
-input[type=text]:focus{    
+/* Inputs en foco */
+input[type="text"]:focus,
+textarea:focus {
     border-bottom: 1px solid hwb(167 23% 3%);
-   
+    outline: none;
 }
 
+/* Selects con texto alineado a la izquierda */
+select {
+    width: 85%;
+    margin: 0 auto;
+    display: block;
+    font-size: 0.95em;
+    padding: 0.5em;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23444' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5em center;
+    background-size: 1em;
+}
 
-button {    
-       
-    box-sizing: border-box; 
-    color: hwb(0 27% 71%);
-    padding: 2vw;     
-    margin-top: 3vw;  
+/* Botones */
+button {
+    color: #333;
+    padding: 0.6em 1.2em;
+    margin: 0.5rem auto;
     border: 1px solid rgb(16, 151, 196);
     cursor: pointer;
-    width: 100%;
-    font-size: 1em;
-    border-radius: 5px;
-    background-color: white;
+    width: 85%;
+    font-size: 0.95em;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    transition: background-color 0.2s ease;
 }
 
-textarea {
-    box-sizing: border-box; 
-    width: 95%;
-    display: block;
-    border: none;
-    border-bottom: 1px solid hsl(0, 3%, 6%);
-    padding: 2vw;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1.5em;
-    margin: auto;
+button:hover {
+    background-color: #d8f3ff;
 }
-/*desktop style*/
-@media (min-width: 768px) { 
+
+/* Desktop layout */
+@media (min-width: 768px) {
     .main-container {
-        box-sizing: border-box; 
-        display: flex;
-        flex-direction: column;
-        background-color: white;
-        box-sizing: border-box; 
+        padding: 2rem;
+        max-height: 90vh;
     }
-    .title{
-        background-color: #a7ddd9;
-        text-align: center;
-    }    
-    select {
-        box-sizing: border-box; 
-        display:flex;
-        width: 95%;
-        font-size: 1em;
-        padding: 0.5em;
-        margin-top: 0.5em;
-        margin: auto;
-    }
-    input {
-        box-sizing: border-box; 
-        width: 80%;    
-        display: block;
-        border: none;
-        border-bottom: 1px solid hsl(0, 3%, 6%);
-        padding: 2vw;
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 1.5em;
-        margin: auto;
-       
-    }
-    
-    input[type=text]:focus{    
-        border-bottom: 1px solid hwb(167 23% 3%);
-       
-    }   
-    
-    button {    
-       
-        box-sizing: border-box; 
-        color: hwb(0 27% 71%);
-        padding: 5px;     
-        margin-top: 5px;  
-        border: 1px solid rgb(16, 151, 196);
-        cursor: pointer;
-        width: 100%;
-        font-size: 1em;
-        border-radius: 5px;
-        background-color: white;
-    }   
 
+    input,
+    textarea,
+    select {
+        width: 70%;
+        font-size: 1em;
+    }
+
+    button {
+        width: 60%;
+        font-size: 1em;
+    }
 }

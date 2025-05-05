@@ -1,115 +1,194 @@
+<!-- INCOME FORM -->
 <ng-container *ngIf="movement_type==='income'">
   <div class="main-container">
-    <h2 class="title" mat-dialog-title>Add new income</h2>
+    <h2 mat-dialog-title>Add new income</h2>
     <form [formGroup]="incomeForm" (ngSubmit)="addMovement()">
       <mat-dialog-content class="mat-typography">
-  
-        <select type="text" autocomplete="off" placeholder="choose category" name="category" formControlName="category">
-          <option value="" disabled selected>Choose category</option>
-          <option *ngFor="let category of categories" [value]=category._id>{{category.name}}</option>
-        </select>
-        <br>
-  
-        <select type="text" autocomplete="off" placeholder="vendor" name="vendor" formControlName="vendor">
-          <option value="" disabled selected>Choose vendor</option>
-          <option *ngFor="let vendor of vendors" [value]="vendor._id">{{vendor.name}}</option>
-        </select>
-        <br>
-  
-        <select type="text" autocomplete="off" placeholder="pocket" name="pocket" formControlName="pocket">
-          <option value="" disabled selected>Choose pocket</option>
-          <option *ngFor="let pocket of pockets" [value]="pocket._id">{{pocket.name}}</option>
-        </select>
-        <br>
-  
-        <input type="text" autocomplete="off" placeholder="insert amount" name="amount" formControlName="amount">
-        <label>Notes
-          <textarea id="notes" type="text" autocomplete="off" name="notes" formControlName="notes"></textarea>
-        </label>
+
+        <div>
+          <label>
+            
+            <select formControlName="category">
+              <option value="" disabled selected>Choose category</option>
+              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <select formControlName="vendor">
+              <option value="" disabled selected>Choose vendor</option>
+              <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <select formControlName="pocket">
+              <option value="" disabled selected>Choose pocket</option>
+              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>            
+            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
+          </label>
+        </div>
+
+        <div>
+          <label>            
+            <input type="date" formControlName="date" />
+          </label>
+          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+        </div>
+
+        <div>
+          <label>
+            
+            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
+          </label>
+        </div>
+
       </mat-dialog-content>
 
-    <mat-dialog-actions align="center">
-      <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Add income</button>
-      <button mat-button mat-dialog-close>Cancel</button>
-      
-    </mat-dialog-actions>  
-      
+      <mat-dialog-actions align="center">
+        <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Add income</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+      </mat-dialog-actions>
     </form>
   </div>
-  
 </ng-container>
 
+<!-- EXPENSE FORM -->
 <ng-container *ngIf="movement_type==='expense'">
   <div class="main-container">
-    <h2 class="title" mat-dialog-title>Add new expense</h2>
+    <h2 mat-dialog-title>Add new expense</h2>
     <form [formGroup]="expenseForm" (ngSubmit)="addMovement()">
       <mat-dialog-content class="mat-typography">
-  
-        <select type="text" autocomplete="off" placeholder="choose category" name="category" formControlName="category">
-          <option value="" disabled selected>Choose category</option>
-          <option *ngFor="let category of categories" [value]=category._id>{{category.name}}</option>
-        </select>
-        <br>
-  
-        <select type="text" autocomplete="off" placeholder="vendor" name="vendor" formControlName="vendor">
-          <option value="" disabled selected>Choose vendor</option>
-          <option *ngFor="let vendor of vendors" [value]="vendor._id">{{vendor.name}}</option>
-        </select>
-        <br>
-  
-        <select type="text" autocomplete="off" placeholder="pocket" name="pocket" formControlName="pocket">
-          <option value="" disabled selected>Choose pocket</option>
-          <option *ngFor="let pocket of pockets" [value]="pocket._id">{{pocket.name}}</option>
-        </select>
-        <br>
-  
-        <input type="text" autocomplete="off" placeholder="insert amount" name="amount" formControlName="amount">
-        <label>Notes
-          <textarea id="notes" type="text" autocomplete="off" name="notes" formControlName="notes"></textarea>
-        </label>
+
+        <div>
+          <label>
+            
+            <select formControlName="category">
+              <option value="" disabled selected>Choose category</option>
+              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <select formControlName="vendor">
+              <option value="" disabled selected>Choose vendor</option>
+              <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <select formControlName="pocket">
+              <option value="" disabled selected>Choose pocket</option>
+              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>  
+                    
+            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount" />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <input type="date" formControlName="date" />
+          </label>
+          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+        </div>
+
+       
+
+        <div>
+          <label>
+            
+            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
+          </label>
+        </div>
+
       </mat-dialog-content>
-  
+
       <mat-dialog-actions align="end">
-        <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>add expense</button>
+        <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Add expense</button>
         <button mat-button mat-dialog-close>Cancel</button>
-        
       </mat-dialog-actions>
     </form>
   </div>
-  
 </ng-container>
 
+<!-- TRANSFER FORM -->
 <ng-container *ngIf="movement_type==='transfer'">
   <div class="main-container">
-
-    <h2 class="title" mat-dialog-title>Add new transfer</h2>
-    <form [formGroup]="transferForm">
+    <h2 mat-dialog-title>Add new transfer</h2>
+    <form [formGroup]="transferForm" (ngSubmit)="addMovement()">
       <mat-dialog-content class="mat-typography">
-  
-        <label>from the pocket
-          <select type="text" autocomplete="off" name="fromPocket" formControlName="fromPocket">
-            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{pocket.name}}</option>
-          </select>
-        </label>
-        <label>to the pocket
-          <select type="text" autocomplete="off" name="toPocket" formControlName="toPocket">
-            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{pocket.name}}</option>
-          </select>
-        </label>
-        <label>Insert transfer amount
-          <input type="text" autocomplete="off" name="amount" formControlName="amount">
-        </label>
-        <label>Notes
-          <textarea id="notes" type="text" autocomplete="off" name="notes" formControlName="notes"></textarea>
-        </label>
-  
+
+        <div>
+          <label>
+            From pocket
+            <select formControlName="fromPocket">
+              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            To pocket
+            <select formControlName="toPocket">
+              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            
+            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
+          </label>
+        </div>
+
+        <div>
+          <label>
+          
+            <input type="date" formControlName="date" />
+          </label>
+          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+        </div>
+
+        <div>
+          <label>
+            
+            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
+          </label>
+        </div>
+
       </mat-dialog-content>
-  
+
       <mat-dialog-actions align="end">
-        <button type="submit" (click)="addMovement()" [mat-dialog-close]="true" cdkFocusInitial>Make transfer</button>
+        <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Make transfer</button>
         <button mat-button mat-dialog-close>Cancel</button>
       </mat-dialog-actions>
     </form>
   </div>
-
 </ng-container>
