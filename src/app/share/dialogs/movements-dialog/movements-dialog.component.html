@@ -6,53 +6,42 @@
       <mat-dialog-content class="mat-typography">
 
         <div>
-          <label>
-            
-            <select formControlName="category">
-              <option value="" disabled selected>Choose category</option>
-              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
-            </select>
-          </label>
+          <label for="income-category">Category</label>
+          <select id="income-category" formControlName="category">
+            <option value="" disabled selected>Choose category</option>
+            <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            
-            <select formControlName="vendor">
-              <option value="" disabled selected>Choose vendor</option>
-              <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
-            </select>
-          </label>
+          <label for="income-vendor">Vendor</label>
+          <select id="income-vendor" formControlName="vendor">
+            <option value="" disabled selected>Choose vendor</option>
+            <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            
-            <select formControlName="pocket">
-              <option value="" disabled selected>Choose pocket</option>
-              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
-            </select>
-          </label>
+          <label for="income-pocket">Pocket</label>
+          <select id="income-pocket" formControlName="pocket">
+            <option value="" disabled selected>Choose pocket</option>
+            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>            
-            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
-          </label>
+          <label for="income-amount">Amount</label>
+          <input id="income-amount" type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
         </div>
 
         <div>
-          <label>            
-            <input type="date" formControlName="date" />
-          </label>
-          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+          <label for="income-date">Date</label>
+          <input id="income-date" type="date" formControlName="date" />
         </div>
 
         <div>
-          <label>
-            
-            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
-          </label>
+          <label for="income-notes">Notes</label>
+          <textarea id="income-notes" formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
         </div>
 
       </mat-dialog-content>
@@ -73,57 +62,42 @@
       <mat-dialog-content class="mat-typography">
 
         <div>
-          <label>
-            
-            <select formControlName="category">
-              <option value="" disabled selected>Choose category</option>
-              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
-            </select>
-          </label>
+          <label for="expense-category">Category</label>
+          <select id="expense-category" formControlName="category">
+            <option value="" disabled selected>Choose category</option>
+            <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            
-            <select formControlName="vendor">
-              <option value="" disabled selected>Choose vendor</option>
-              <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
-            </select>
-          </label>
+          <label for="expense-vendor">Vendor</label>
+          <select id="expense-vendor" formControlName="vendor">
+            <option value="" disabled selected>Choose vendor</option>
+            <option *ngFor="let vendor of vendors" [value]="vendor._id">{{ vendor.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            
-            <select formControlName="pocket">
-              <option value="" disabled selected>Choose pocket</option>
-              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
-            </select>
-          </label>
+          <label for="expense-pocket">Pocket</label>
+          <select id="expense-pocket" formControlName="pocket">
+            <option value="" disabled selected>Choose pocket</option>
+            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>  
-                    
-            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount" />
-          </label>
+          <label for="expense-amount">Amount</label>
+          <input id="expense-amount" type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
         </div>
 
         <div>
-          <label>
-            
-            <input type="date" formControlName="date" />
-          </label>
-          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+          <label for="expense-date">Date</label>
+          <input id="expense-date" type="date" formControlName="date" />
         </div>
 
-       
-
         <div>
-          <label>
-            
-            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
-          </label>
+          <label for="expense-notes">Notes</label>
+          <textarea id="expense-notes" formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
         </div>
 
       </mat-dialog-content>
@@ -144,43 +118,32 @@
       <mat-dialog-content class="mat-typography">
 
         <div>
-          <label>
-            From pocket
-            <select formControlName="fromPocket">
-              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
-            </select>
-          </label>
+          <label for="transfer-fromPocket">From pocket</label>
+          <select id="transfer-fromPocket" formControlName="fromPocket">
+            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            To pocket
-            <select formControlName="toPocket">
-              <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
-            </select>
-          </label>
+          <label for="transfer-toPocket">To pocket</label>
+          <select id="transfer-toPocket" formControlName="toPocket">
+            <option *ngFor="let pocket of pockets" [value]="pocket._id">{{ pocket.name }}</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            
-            <input type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
-          </label>
+          <label for="transfer-amount">Amount</label>
+          <input id="transfer-amount" type="text" formControlName="amount" autocomplete="off" placeholder="insert amount"/>
         </div>
 
         <div>
-          <label>
-          
-            <input type="date" formControlName="date" />
-          </label>
-          <!--<p>Selected date: {{ getSelectedDate() | date: 'fullDate' }}</p>-->
+          <label for="transfer-date">Date</label>
+          <input id="transfer-date" type="date" formControlName="date" />
         </div>
 
         <div>
-          <label>
-            
-            <textarea formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
-          </label>
+          <label for="transfer-notes">Notes</label>
+          <textarea id="transfer-notes" formControlName="notes" autocomplete="off" placeholder="write something...."></textarea>
         </div>
 
       </mat-dialog-content>

@@ -66,7 +66,7 @@ export class MovementsDialogComponent implements OnChanges {
       pocket: ["", [Validators.required]],
       amount: ["", [Validators.required]],
       notes: ["", [Validators.required]],
-      date: [this.getTodaysDateInputFormat()]
+      date: [this.getTodaysDateInputFormat(), [Validators.required]]
       
     });
 
@@ -76,7 +76,7 @@ export class MovementsDialogComponent implements OnChanges {
       pocket: ["", [Validators.required]],
       amount: ["", [Validators.required]],
       notes: ["", [Validators.required]],
-      date: [this.getTodaysDateInputFormat()]
+      date: [this.getTodaysDateInputFormat(), [Validators.required]]
     });
 
     this.transferForm = this._formBuilder.group({
@@ -84,7 +84,7 @@ export class MovementsDialogComponent implements OnChanges {
       toPocket: ["", [Validators.required]],
       amount: ["", [Validators.required]],
       notes: ["", [Validators.required]],
-      date: [this.getTodaysDateInputFormat()]
+      date: [this.getTodaysDateInputFormat(), [Validators.required]]
     })
 
 
@@ -177,6 +177,7 @@ export class MovementsDialogComponent implements OnChanges {
           fromPocket: null,
           toPocket: null,
           wallet: this.wallet._id,
+          date:this.expenseForm.value.date
           
         };
         console.log("EXPENSE MOVEMENT: ", movement);
@@ -195,7 +196,8 @@ export class MovementsDialogComponent implements OnChanges {
           notes: this.transferForm.value.notes,
           fromPocket: this.transferForm.value.fromPocket,
           toPocket: this.transferForm.value.toPocket,
-          wallet: this.wallet._id
+          wallet: this.wallet._id,
+          date:this.transferForm.value.date
         };
         console.log("TRANSFER MOVEMENT: ", movement);
 
