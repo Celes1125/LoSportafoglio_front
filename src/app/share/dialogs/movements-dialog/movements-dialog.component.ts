@@ -105,9 +105,9 @@ export class MovementsDialogComponent implements OnChanges {
 
   // Devuelve la fecha seleccionada como objeto Date
   // returns the seleted date like a Date type object
-  getSelectedDate(): Date {   
-    return new Date(this.incomeForm.value.date);
-  }
+ // getSelectedDate(): Date {   
+   // return new Date(this.incomeForm.value.date);
+  //}
 
 
   getCategories() {
@@ -157,7 +157,7 @@ export class MovementsDialogComponent implements OnChanges {
           fromPocket: null,
           toPocket: null,
           wallet: this.wallet._id,
-          date:this.incomeForm.value.date
+          date: new Date (this.incomeForm.value.date)
           
         };
         console.log("INCOME MOVEMENT: ", movement);
@@ -177,7 +177,7 @@ export class MovementsDialogComponent implements OnChanges {
           fromPocket: null,
           toPocket: null,
           wallet: this.wallet._id,
-          date:this.expenseForm.value.date
+          date:new Date (this.expenseForm.value.date)
           
         };
         console.log("EXPENSE MOVEMENT: ", movement);
@@ -197,7 +197,7 @@ export class MovementsDialogComponent implements OnChanges {
           fromPocket: this.transferForm.value.fromPocket,
           toPocket: this.transferForm.value.toPocket,
           wallet: this.wallet._id,
-          date:this.transferForm.value.date
+          date: new Date (this.transferForm.value.date)
         };
         console.log("TRANSFER MOVEMENT: ", movement);
 

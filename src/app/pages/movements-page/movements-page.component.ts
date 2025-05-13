@@ -2,8 +2,8 @@
 import { MatIconModule } from '@angular/material/icon';
 import { DeleteAllMovementsDialogComponent } from '../../share/dialogs/delete-all-movements-dialog/delete-all-movements-dialog.component';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { jsPDF } from 'jspdf';
+import { autoTable } from 'jspdf-autotable';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -214,70 +214,82 @@ export class MovementsPageComponent implements OnChanges, OnInit {
   }
 
   generatePdfFromFrontend() {
-    // Configurar el PDF en apaisado (horizontal) con tamaño A4
-    const doc = new jsPDF({
-      orientation: 'landscape', // Para que sea apaisado
-      unit: 'mm',               // Unidad de medida en milímetros
-      format: 'a4'              // Tamaño A4
-    });
+    console.log('Iniciando generatePdfFromFrontend...');
+    try {
+      // Configurar el PDF en apaisado (horizontal) con tamaño A4
+      const doc = new jsPDF({
+        orientation: 'landscape', // Para que sea apaisado
+        unit: 'mm',               // Unidad de medida en milímetros
+        format: 'a4'              // Tamaño A4
+      });
+      console.log('Instancia de jsPDF creada:', doc);
 
-    // Captura los encabezados de la tabla
-    const tableHeaders = this.displayedColumns.map(col => {
-      switch (col) {
-        case 'user': return 'User';
-        case 'type': return 'Type';
-        case 'category': return 'Category';
-        case 'vendor': return 'Vendor';
-        case 'currency': return 'Currency';
-        case 'amount': return 'Amount';
-        case 'year': return 'Year';
-        case 'month': return 'Month';
-        case 'fromPocket': return 'From Pocket';
-        case 'toPocket': return 'To Pocket';
-        case 'pocket': return 'Pocket';
-        case 'wallet': return 'Wallet';
-        case 'notes': return 'Notes';
-        default: return col;
-      }
-    });
+      // *** Verificación Clave ***
+      console.log('Tipo de doc.autoTable:', typeof (doc as any).autoTable);
+      // **
 
-    // Captura los datos de la tabla
-    const tableData = this.dataSource.filteredData.map((movement: any) => {
-      return this.displayedColumns.map(column => {
-        switch (column) {
-          case 'user': return movement.user?.name || '-';
-          case 'type': return movement.type || '-';
-          case 'category': return movement.category?.name || '-';
-          case 'vendor': return movement.vendor?.name || '-';
-          case 'currency': return movement.currency || '-';
-          case 'amount': return movement.amount || '-';
-          case 'year': return movement.year || '-';
-          case 'month': return movement.month || '-';
-          case 'fromPocket': return movement.fromPocket?.name || '-';
-          case 'toPocket': return movement.toPocket?.name || '-';
-          case 'pocket': return movement.pocket?.name || '-';
-          case 'wallet': return movement.wallet?.name || '-';
-          case 'notes': return movement.notes || '-';
-          default: return '-';
+      // Captura los encabezados de la tabla
+      const tableHeaders = this.displayedColumns.map(col => {
+        switch (col) {
+          case 'user': return 'User';
+          case 'type': return 'Type';
+          case 'category': return 'Category';
+          case 'vendor': return 'Vendor';
+          case 'currency': return 'Currency';
+          case 'amount': return 'Amount';
+          case 'year': return 'Year';
+          case 'month': return 'Month';
+          case 'fromPocket': return 'From Pocket';
+          case 'toPocket': return 'To Pocket';
+          case 'pocket': return 'Pocket';
+          case 'wallet': return 'Wallet';
+          case 'notes': return 'Notes';
+          default: return col;
         }
       });
-    });
 
-    // Usa jsPDF autoTable para renderizar la tabla
-    (doc as any).autoTable({
-      head: [tableHeaders],
-      body: tableData,
-      startY: 10, // Empieza un poco más abajo para evitar el título
-    });
+      // Captura los datos de la tabla
+      const tableData = this.dataSource.filteredData.map((movement: any) => {
+        return this.displayedColumns.map(column => {
+          switch (column) {
+            case 'user': return movement.user?.name || '-';
+            case 'type': return movement.type || '-';
+            case 'category': return movement.category?.name || '-';
+            case 'vendor': return movement.vendor?.name || '-';
+            case 'currency': return movement.currency || '-';
+            case 'amount': return movement.amount || '-';
+            case 'year': return movement.year || '-';
+            case 'month': return movement.month || '-';
+            case 'fromPocket': return movement.fromPocket?.name || '-';
+            case 'toPocket': return movement.toPocket?.name || '-';
+            case 'pocket': return movement.pocket?.name || '-';
+            case 'wallet': return movement.wallet?.name || '-';
+            case 'notes': return movement.notes || '-';
+            default: return '-';
+          }
+        });
+      });
+      console.log('Llamando a doc.autoTable...');
+      // Usa jsPDF autoTable para renderizar la tabla
+      autoTable(doc, {
+        head: [tableHeaders],
+        body: tableData,
+        startY: 10, // Empieza un poco más abajo para evitar el título
+      });
+      console.log('doc.autoTable llamado (aparentemente) sin error inmediato.');
+      // Guarda el PDF
+      doc.save('movements_table.pdf');
+      console.log('PDF guardado.');
+    } catch (error){
+      console.error("Error detallado dentro de generatePdfFromFrontend:", error);
+    }
 
-    // Guarda el PDF
-    doc.save('movements_table.pdf');
   }
-  
-  generatePdfFromBackend(){   
-    
+
+  generatePdfFromBackend() {
+
     const filters = { ...this.filterValues }
-    
+
     console.log('FILTERS: ', filters)
     this._movementsService.getPdfMovementsTableWithFilters(filters).pipe(
       tap((blob: Blob) => {
@@ -295,7 +307,7 @@ export class MovementsPageComponent implements OnChanges, OnInit {
       })
     ).subscribe();
   }
-    
+
 }
 
 
