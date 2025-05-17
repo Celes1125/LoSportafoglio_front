@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone:true,
   selector: 'app-main-menu',
   imports: [],
   templateUrl: './main-menu.component.html',

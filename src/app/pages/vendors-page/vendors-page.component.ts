@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
 import { VendorService } from '../../core/services/vendor.service';
 import { Vendor } from '../../core/interfaces/vendor';
 import { VendorsDialogComponent } from '../../share/dialogs/vendors-dialog/vendors-dialog.component';
@@ -14,14 +13,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-vendors-page',
   standalone: true,
-  imports: [MatDialogModule, MatIconModule, MatInputModule, MatFormFieldModule, RouterModule, MatTableModule, FormsModule],
+  imports: [MatDialogModule, MatIconModule, MatInputModule, MatFormFieldModule, MatTableModule, FormsModule],
   templateUrl: './vendors-page.component.html',
   styleUrl: './vendors-page.component.css'
 })
 
 export class VendorsPageComponent implements OnInit {
-  dataSource!: any
-  router: Router = new Router
+  dataSource!: any  
   deleteFlag: boolean = true  
   
   constructor(

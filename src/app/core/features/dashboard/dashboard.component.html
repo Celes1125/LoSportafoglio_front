@@ -1,24 +1,50 @@
-<div class="main-container"> 
+<div class="main-container">
 
-          <!-- main menu -->
-          <div class="main-menu">
-            <app-main-menu (homeFlag)="setHomeFlag($event)" (walletFlag)="setManageFlag($event)"
-              (reportFlag)="setReportFlag($event)"></app-main-menu>
-          </div>
+  <!-- main menu -->
+  <div class="main-menu">
+    <app-main-menu (homeFlag)="setHomeFlag($event)" (walletFlag)="setManageFlag($event)"
+      (reportFlag)="setReportFlag($event)">
+    </app-main-menu>
+  </div>
 
-          <!-- main content: 
+  <!-- main content: 
         if the user select home/manage/reports from the bottom menu, the main content will show
         the corresponding component template -->
-          <div class="content-container" *ngIf="homeFlag || manageFlag || reportFlag">
-            <ng-container *ngIf="homeFlag">
-              <app-home></app-home>
-            </ng-container>
-            <ng-container *ngIf="manageFlag">
-              <app-manage-page></app-manage-page>
-            </ng-container>
-            <ng-container *ngIf="reportFlag">
-              <app-reports-page></app-reports-page>
-            </ng-container>
-          </div>           
+  <div class="content-container">
+    @defer (when homeFlag) {
+    <app-home></app-home>
+    } @placeholder {
+    <!-- Contenido opcional que se muestra ANTES de que se cargue o si homeFlag es false inicialmente -->
+    <!-- Podrías tener un placeholder general o específico para cada sección -->
+    <!-- <p>Selecciona una opción del menú.</p> -->
+    } @loading (minimum 1s) { <!-- Opcional: muestra un indicador de carga -->
+    <p>Cargando Inicio...</p>
+    } @error { <!-- Opcional: muestra un mensaje si la carga falla -->
+    <p>Error al cargar la sección de Inicio.</p>
+    }
+
+    @defer (when manageFlag) {
+    <app-manage-page></app-manage-page>
+    } @placeholder {
+    <!-- <p>Contenido de Manage Page se mostrará aquí.</p> -->
+    } @loading (minimum 1s) {
+    <p>Cargando Gestión...</p>
+    } @error {
+    <p>Error al cargar la sección de Gestión.</p>
+    }
+
+    @defer (when reportFlag) {
+    <app-reports-page></app-reports-page>
+    } @placeholder {
+    <!-- <p>Contenido de Reports Page se mostrará aquí.</p> -->
+    } @loading (minimum 1s) {
+    <p>Cargando Reportes...</p>
+    } @error {
+    <p>Error al cargar la sección de Reportes.</p>
+    }
+
+  </div>
 
 </div>
+
+

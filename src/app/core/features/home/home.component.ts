@@ -2,7 +2,7 @@ import { SharedService } from '../../services/shared.service';
 import { FormsModule } from '@angular/forms';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { WalletComponent } from '../wallet/wallet.component';
 import { WalletService } from '../../services/wallet.service';
 import { WalletsPageComponent } from '../../../pages/wallets-page/wallets-page.component';
@@ -20,12 +20,11 @@ import { AuthenticationService } from '../../services/authentication.service';
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [FormsModule, CommonModule, WalletComponent, MatButtonModule, MatIconModule, MatDialogModule, RouterModule, WalletsPageComponent]
+    imports: [FormsModule, CommonModule, WalletComponent, MatButtonModule, MatIconModule, MatDialogModule, WalletsPageComponent]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
-    router: Router = new Router()
+export class HomeComponent implements OnInit, AfterViewInit {    
     wallets!: Wallet[]  
-    userId! : string 
+    userId! : string     
     selectedWallet: Wallet | null = null
     @ViewChild('createWallet') createWalletElement!: ElementRef
     @ViewChild('selectWallet') selectWalletElement!: ElementRef
@@ -35,9 +34,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
         public dialog: MatDialog,
         public walletService: WalletService,
         public sharedService: SharedService,        
-        private authService: AuthenticationService,        
+        private authService: AuthenticationService,  
+        private router: Router,      
     ) {       
-        this.authService.getUserId().subscribe(response => response)
+        this.authService.getUserId().subscribe(response => {
+            this.userId = response})
         
     }
 

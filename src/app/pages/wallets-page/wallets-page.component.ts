@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { WalletService } from '../../core/services/wallet.service';
 import { FormsModule } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Wallet } from '../../core/interfaces/wallet';
 import { SharedService } from '../../core/services/shared.service';
 import { lastValueFrom } from 'rxjs';
@@ -22,20 +22,20 @@ import { EditWalletDialogComponent } from '../../share/dialogs/edit-wallet-dialo
   standalone: true,
   templateUrl: './wallets-page.component.html',
   styleUrl: './wallets-page.component.css',
-  imports: [MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule]
+  imports: [MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule]
 })
 export class WalletsPageComponent {
 
   wallets!: any
   dataSource: any = []
-  selection = new SelectionModel<any>(false, [])
-  router: Router = new Router
+  selection = new SelectionModel<any>(false, [])  
   labelPosition: 'before' | 'after' = 'before';
 
   constructor(
     private walletService: WalletService,
     private sharedService: SharedService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router:Router
   ) {
     this.getAllWallets()
   }

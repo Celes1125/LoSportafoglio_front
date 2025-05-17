@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
+  standalone:true,
   selector: 'app-pocket',
   imports: [RouterModule, MatDialogModule],
   templateUrl: './pocket.component.html',

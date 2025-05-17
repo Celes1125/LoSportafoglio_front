@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
 import { CategoryService } from '../../core/services/category.service';
 import { CategoriesDialogComponent } from '../../share/dialogs/categories-dialog/categories-dialog.component';
 import { Category } from '../../core/interfaces/category';;
@@ -14,13 +13,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-categories-page',
   standalone: true,
-  imports: [ MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule, RouterModule],
+  imports: [ MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule],
   templateUrl: './categories-page.component.html',
   styleUrl: './categories-page.component.css'
 })
 export class CategoriesPageComponent implements OnInit {
-  dataSource!: any;
-  router: Router = new Router
+  dataSource!: any;  
   deleteFlag: boolean = true
 
   constructor(
