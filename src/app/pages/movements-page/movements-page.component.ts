@@ -18,7 +18,7 @@ import { catchError, of, tap } from 'rxjs';
 @Component({
   selector: 'app-movements-page',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule],
+  imports: [DeleteAllMovementsDialogComponent, CommonModule, MatIconModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule],
   templateUrl: './movements-page.component.html',
   styleUrl: './movements-page.component.css'
 })

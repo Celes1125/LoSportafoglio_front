@@ -13,7 +13,7 @@ import { PocketsDialogComponent } from '../../share/dialogs/pockets-dialog/pocke
 @Component({
     selector: 'app-manage-page',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatIconModule, MatDialogModule],
+    imports: [PocketsDialogComponent, WalletsPageComponent, VendorsPageComponent, CategoriesPageComponent, CommonModule, MatButtonModule, MatIconModule, MatDialogModule],
     templateUrl: './manage-page.component.html',
     styleUrl: './manage-page.component.css',
 })

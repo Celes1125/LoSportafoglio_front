@@ -6,15 +6,15 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes,
       // Opcional: Habilitar el binding de parámetros de ruta a inputs de componentes
       withComponentInputBinding(),
       // Opcional: Otras características del router como withDebugTracing()
       // withDebugTracing()
     ),
-    provideAnimationsAsync(),    
-    provideHttpClient(withFetch()), provideAnimationsAsync(),    
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ]
 };
 
