@@ -18,6 +18,7 @@ import { CreateWalletDialogComponent } from '../../../share/dialogs/create-walle
 export class HomeComponent implements OnInit {
   wallets: Wallet[] = [];
   selectedWallet: Wallet | null = null;
+  
   constructor(
     public dialog: MatDialog,
     public walletService: WalletService,

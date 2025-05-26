@@ -150,7 +150,8 @@ export class WalletComponent implements OnInit {
             dialogRef.afterClosed().subscribe(
                 response => {
                     if (response) {
-                        this.router.navigateByUrl('/dashboard');
+                        this.refreshData();
+                        this.cdr.detectChanges();
                     }
                 });
         } catch (error) {

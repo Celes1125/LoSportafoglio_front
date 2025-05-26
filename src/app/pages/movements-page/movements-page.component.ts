@@ -2,7 +2,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { catchError, of, tap } from 'rxjs';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { EventEmitter } from 'stream';
 @Component({
   selector: 'app-movements-page',
   standalone: true,
@@ -32,6 +33,7 @@ export class MovementsPageComponent implements OnChanges, OnInit {
   movementsData: any[] = [];
   years: any[] = []
   months: any[] = []
+ 
 
   // Objeto que almacenará los filtros aplicados
   filterValues: any = {
@@ -47,7 +49,8 @@ export class MovementsPageComponent implements OnChanges, OnInit {
   constructor(
     private _movementsService: MovementService,
     public dialog: MatDialog,
-    private router: Router
+    
+   
   ) { }
   ngOnInit(): void {
     this.getMovements()
@@ -121,8 +124,11 @@ export class MovementsPageComponent implements OnChanges, OnInit {
       {
         const dialogRef = this.dialog.open(DeleteAllMovementsDialogComponent, {})
         this.dataSource
-        dialogRef.afterClosed().subscribe(() => {
-          this.router.navigateByUrl('/dashboard')
+        dialogRef.afterClosed().subscribe((response) => {
+          if(response){
+            this.getMovements()
+          }
+                    
         });
       }
     } catch (error) {

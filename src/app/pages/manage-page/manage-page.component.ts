@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-manage-page',
     standalone: true,
@@ -12,7 +13,8 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 })
 export class ManagePageComponent {
     constructor(
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private router: Router
     ) { }
     async openAddPocketDialog(wallet: any) {
         try {
@@ -27,7 +29,7 @@ export class ManagePageComponent {
                 response => {
                     if (response) {
                         alert("pocked added ok")
-                        //this.router.navigateByUrl('/dashboard');
+                        
                     }
                 });
         } catch (error) {
@@ -43,6 +45,7 @@ export class ManagePageComponent {
                 alert("wallets changes saved ok")
             }
             )
+            this.router.navigateByUrl('/dashboard/manage')
         } catch (error) {
             console.error("Error loading dialog component", error);
 
@@ -57,8 +60,10 @@ export class ManagePageComponent {
                 response => {
                     if (response) {
                         console.log('vendors changes saved ok: ', response)
+                        this.router.navigateByUrl('/dashboard/manage');
                     }
                 })
+                
         } catch (error) {
             console.error("Error loading dialog component", error);
         }
@@ -72,8 +77,9 @@ export class ManagePageComponent {
                 response => {
                     if (response) {
                         console.log('categories changes saved ok: ', response)
+                        this.router.navigateByUrl('/dashboard/manage');
                     }
-                })
+                })                
         } catch (error) {
             console.error("Error loading dialog component", error);
         }

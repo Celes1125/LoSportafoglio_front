@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { WalletService } from '../../core/services/wallet.service';
 import { FormsModule } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -24,11 +24,13 @@ export class WalletsPageComponent {
   dataSource: any = []
   selection = new SelectionModel<any>(false, [])
   labelPosition: 'before' | 'after' = 'before';
+  @Output() changesOnWalletsArray = new EventEmitter<void>();
   constructor(
     private walletService: WalletService,
     private sharedService: SharedService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    
   ) {
     this.getAllWallets()
   }
@@ -108,7 +110,9 @@ export class WalletsPageComponent {
         this.selection.clear();
         this.sharedService.setSelectedValue(null)
         await this.getAllWallets()
-        this.router.navigateByUrl('/dashboard')
+        this.changesOnWalletsArray.emit();
+        //this.router.navigateByUrl('/dashboard/home')
+        
       });
     } catch (error) {
       console.log('error loading dialog', error)

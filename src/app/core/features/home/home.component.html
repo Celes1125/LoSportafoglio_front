@@ -1,4 +1,6 @@
 
+
+
 <!--Opción 1: Sin wallets / Option 1: no wallets case -->
 <div class="create" *ngIf="wallets?.length === 0">
   <p>You don't have any wallets yet</p>
@@ -9,10 +11,12 @@
 <!--Opción 2: Con wallets pero sin selección / Option 2: wallets but not one selected case-->
 <div class="select" *ngIf="wallets.length >= 1 && !selectedWallet">
   <p>Please, select a wallet to use:</p>
-  <app-wallets-page></app-wallets-page>
+  <app-wallets-page (changesOnWalletsArray)="refreshingComponent()"></app-wallets-page>
 </div>
 
 <!--Opción 3: Wallet seleccionada / Option 3: selected wallet case-->
 <div class="showing-wallet" *ngIf="selectedWallet">
   <app-wallet [wallet]="selectedWallet"></app-wallet>
 </div>
+
+
