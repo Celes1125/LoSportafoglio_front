@@ -85,7 +85,6 @@ export class WalletService {
   //logic delete wallet
   logic_delete(id: any): any {
     const pocketsOfWallet$ = this.getPocketsOfWallet(id);
-
     return pocketsOfWallet$.pipe(
       tap(pockets => console.log('pockets of wallet to delete: ', pockets)),
       concatMap(pockets => {
@@ -124,8 +123,9 @@ export class WalletService {
           amount: 0,
           currency: "euro",
           wallet: savedWallet._id
-        };
+        };        
         return this._pocketService.create(pocket);
+        
       }),
       catchError((error) => {
         if (error.error.message.includes('E11000')) {

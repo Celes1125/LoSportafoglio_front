@@ -1,36 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-main-menu',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './main-menu.component.html',
-  styleUrl: './main-menu.component.css'
+  styleUrls: ['./main-menu.component.css']
 })
-export class MainMenuComponent {  
-  @Output()
-  homeFlag: EventEmitter<boolean> = new EventEmitter<boolean>()
-  @Output()
-  manageFlag: EventEmitter<boolean> = new EventEmitter<boolean>()
-  @Output()
-  reportFlag: EventEmitter<boolean> = new EventEmitter<boolean>()
-
-  constructor(private router: Router) {}
-
-  sendHomeFlag() {this.homeFlag.emit(true)}
-
-  sendManageFlag() {this.manageFlag.emit(true)}
-
-  sendReportFlag() {this.reportFlag.emit(true)}
-
+export class MainMenuComponent {
+  constructor(
+    private router:Router
+  ) {}
   logout() {
     localStorage.removeItem('token');
     alert('See you later!');
-    this.router.navigateByUrl('login').then(() => {
-      window.location.reload();
-    });
+    this.router.navigateByUrl('/login');
   }
-
+  
 
 }

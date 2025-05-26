@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../../core/services/category.service';
-import { CategoriesDialogComponent } from '../../share/dialogs/categories-dialog/categories-dialog.component';
 import { Category } from '../../core/interfaces/category';;
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,12 +12,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-categories-page',
   standalone: true,
-  imports: [ MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule],
+  imports: [MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, FormsModule, MatDialogModule],
   templateUrl: './categories-page.component.html',
   styleUrl: './categories-page.component.css'
 })
 export class CategoriesPageComponent implements OnInit {
-  dataSource!: any;  
+  dataSource!: any;
   deleteFlag: boolean = true
 
   constructor(
@@ -43,23 +42,27 @@ export class CategoriesPageComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openCategoriesDialog(category?: Category, deleteFlag?: boolean) {
-    const dialogRef = this.dialog.open(CategoriesDialogComponent, {
-      data: {
-        category: category,
-        deleteFlag: deleteFlag
-      }
-    });
-    dialogRef.afterClosed().subscribe(
-      (response) => {
-        if (response) {
-          this.getAllCategories()
-          console.log('DATASOURCE: ', this.dataSource)
-          console.log("categories changes saved ok: ", response)
-          alert("categories changes saved ok: ")
+  async openCategoriesDialog(category?: Category, deleteFlag?: boolean) {
+    try {
+      const { CategoriesDialogComponent } = await import('../../share/dialogs/categories-dialog/categories-dialog.component')
+      const dialogRef = this.dialog.open(CategoriesDialogComponent, {
+        data: {
+          category: category,
+          deleteFlag: deleteFlag
         }
-      }
-    )
+      });
+      dialogRef.afterClosed().subscribe(
+        (response) => {
+          if (response) {
+            this.getAllCategories()
+            console.log('DATASOURCE: ', this.dataSource)
+            console.log("categories changes saved ok: ", response)
+            alert("categories changes saved ok: ")
+          }
+        }
+      )
+    } catch (error) {
+      console.error("Error loading dialog component", error);
+    }
   }
-
 }

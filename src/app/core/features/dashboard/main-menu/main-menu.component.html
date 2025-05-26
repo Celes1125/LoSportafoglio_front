@@ -1,13 +1,13 @@
 <div class="main-container">
 
     <ul>
-        <li (click)="sendHomeFlag()">
+        <li [routerLink]="'home'">
             <i class="fa-solid fa-house fa-lg"></i>
         </li>
-        <li (click)="sendManageFlag()">        
+        <li [routerLink]="'manage'">        
             <i class="fa-solid fa-gear fa-lg"></i>        
         </li>
-        <li (click)="sendReportFlag()">        
+        <li [routerLink]="'reports'">        
              <i class="fa-solid fa-chart-line fa-lg"></i>        
         </li>
         <li>        

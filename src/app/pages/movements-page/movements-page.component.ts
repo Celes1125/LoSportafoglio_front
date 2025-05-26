@@ -1,29 +1,27 @@
 
-import { MatIconModule } from '@angular/material/icon';
-import { DeleteAllMovementsDialogComponent } from '../../share/dialogs/delete-all-movements-dialog/delete-all-movements-dialog.component';
+
+import { CommonModule } from '@angular/common';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { catchError, of, tap } from 'rxjs';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
+import { MovementService } from '../../core/services/movement.service';
+import { Movement } from '../../core/interfaces/movement';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MovementService } from '../../core/services/movement.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { Movement } from '../../core/interfaces/movement';
-import { CommonModule } from '@angular/common';
-import { catchError, of, tap } from 'rxjs';
-
 @Component({
   selector: 'app-movements-page',
   standalone: true,
-  imports: [DeleteAllMovementsDialogComponent, CommonModule, MatIconModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule],
+  imports: [CommonModule, MatIconModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule],
   templateUrl: './movements-page.component.html',
   styleUrl: './movements-page.component.css'
 })
 export class MovementsPageComponent implements OnChanges, OnInit {
-
   movements: any;
   dataSource: any;
   users: any[] = [];
@@ -46,21 +44,17 @@ export class MovementsPageComponent implements OnChanges, OnInit {
     month: '',
     wallet: ''
   };
-
   constructor(
     private _movementsService: MovementService,
     public dialog: MatDialog,
     private router: Router
   ) { }
-
   ngOnInit(): void {
     this.getMovements()
   }
-
   ngOnChanges(changes: SimpleChanges): void {
     this.getMovements()
   }
-
   getMovements() {
     this._movementsService.getAll().subscribe((response: any) => {
       this.movements = response.map((movement: any) => {
@@ -121,14 +115,20 @@ export class MovementsPageComponent implements OnChanges, OnInit {
     }
   }
 
-  openDeleteAllMovementsDialog() {
-    {
-      const dialogRef = this.dialog.open(DeleteAllMovementsDialogComponent, {})
-      this.dataSource
-      dialogRef.afterClosed().subscribe(() => {
-        this.router.navigateByUrl('/dashboard')
-      });
+  async openDeleteAllMovementsDialog() {
+    try {
+      const { DeleteAllMovementsDialogComponent } = await import('../../share/dialogs/delete-all-movements-dialog/delete-all-movements-dialog.component');
+      {
+        const dialogRef = this.dialog.open(DeleteAllMovementsDialogComponent, {})
+        this.dataSource
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigateByUrl('/dashboard')
+        });
+      }
+    } catch (error) {
+      console.log('error loading dialog component')
     }
+
   }
 
   displayedColumns: string[] = ['user', 'type', 'category', 'vendor', 'currency', 'amount', 'year', 'month', /*'date',*/ 'fromPocket', 'toPocket', 'pocket', 'wallet', 'notes'];
@@ -280,7 +280,7 @@ export class MovementsPageComponent implements OnChanges, OnInit {
       // Guarda el PDF
       doc.save('movements_table.pdf');
       console.log('PDF guardado.');
-    } catch (error){
+    } catch (error) {
       console.error("Error detallado dentro de generatePdfFromFrontend:", error);
     }
 

@@ -1,10 +1,12 @@
-<div class="main-container">
+@if(wallet){<div class="main-container">
+ 
     <h2 class="title" mat-dialog-title>Edit {{wallet.name}}</h2>
-    <mat-dialog-content class="mat-typography">      
-        <app-wallet [wallet]="wallet"></app-wallet>  
+    <mat-dialog-content class="mat-typography">          
+        <app-wallet [wallet]="wallet"></app-wallet>   
     </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>Cancel</button>
       <button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
     </mat-dialog-actions>
   </div>
+}

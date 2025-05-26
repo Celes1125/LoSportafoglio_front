@@ -1,6 +1,5 @@
 <div class="main-container" #createWallet>
   <div>
-
     <h2 class="title" mat-dialog-title>Add new wallet</h2>
     <form [formGroup]="walletForm">
       <mat-dialog-content class="mat-typography">
@@ -9,12 +8,9 @@
         </label>
       </mat-dialog-content>
       <mat-dialog-actions align="end">
-
         <button mat-button mat-dialog-close>Cancel</button>
         <button (click)="addWallet()" type="submit" [mat-dialog-close]="true" cdkFocusInitial>Create wallet</button>
-
       </mat-dialog-actions>
     </form>
-  </div>
-  
+  </div>  
 </div>

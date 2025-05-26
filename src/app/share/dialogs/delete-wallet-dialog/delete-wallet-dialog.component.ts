@@ -1,9 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { WalletService } from '../../../core/services/wallet.service';
 import { Wallet } from '../../../core/interfaces/wallet';
-//Material Design
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-delete-wallet-dialog',
   standalone: true,
@@ -11,10 +9,8 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './delete-wallet-dialog.component.html',
   styleUrl: './delete-wallet-dialog.component.css'
 })
-
 export class DeleteWalletDialogComponent {
   wallet: Wallet;
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _walletService: WalletService

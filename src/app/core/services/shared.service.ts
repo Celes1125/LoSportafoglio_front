@@ -12,4 +12,5 @@ export class SharedService {
   setSelectedValue(value: Wallet | null) {
     this.selectedValueSubject.next(value);
   }
+  
 }

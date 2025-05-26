@@ -33,7 +33,7 @@
             <ng-container matColumnDef="edit">
                <th mat-header-cell *matHeaderCellDef></th> 
                 <td mat-cell *matCellDef="let wallet">
-                    <button value="{{wallet._id}}" (click)="openEditWalletDialog(wallet)">
+                    <button value="{{wallet._id}}" (click)="openEditWalletDialog(wallet._id)">
                         <i class="fa-solid fa-pencil"></i>
                     </button>
                 </td>

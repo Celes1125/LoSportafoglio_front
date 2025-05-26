@@ -3,29 +3,14 @@
 
     <div class="reports-menu">
         <ul>
-            <li id="movementsBtn">Movements</li>
-            <li id="graphicsBtn">Graphics</li>
-            <li id="archiveBtn">Archive</li>
+            <li [routerLink]="'movements'">Movements</li>
+            <li [routerLink]="'graphics'">Graphics</li>
+            <li [routerLink]="'archive'">Archive</li>
         </ul>        
     </div>    
     
     <div class="content-container" #container>
-
-        <div #movements style="display: none">            
-            <app-movements-page></app-movements-page>         
-        </div>
-
-        <div #graphics style="display: none">
-            <h1>Graphics</h1>
-            <p>I am sorry but this page is on development, we hope to activate it soon</p>
-        </div>
-    
-        <div #archive style="display: none">
-            <h1>Archive</h1>
-            <p>I am sorry but this page is on development, we hope to activate it soon</p>
-        </div>
+        <router-outlet></router-outlet>
     </div>
-
-
 </div>
 
