@@ -8,6 +8,7 @@ import { Wallet } from '../../interfaces/wallet';
 import { WalletComponent } from '../wallet/wallet.component';
 import { WalletsPageComponent } from '../../../pages/wallets-page/wallets-page.component';
 import { CreateWalletDialogComponent } from '../../../share/dialogs/create-wallet-dialog/create-wallet-dialog.component';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public walletService: WalletService,
-    public sharedService: SharedService
+    public sharedService: SharedService,
+    private cdr:ChangeDetectorRef,
     
   ) { }
   async ngOnInit(): Promise<void> {
@@ -33,28 +35,30 @@ export class HomeComponent implements OnInit {
       this.wallets = [];
     }
     this.sharedService.selectedValue$.subscribe((wallet) => {
-      this.selectedWallet = wallet;
+      this.selectedWallet = wallet;      
     });
   }
   async refreshingComponent (){
     try {
-      this.wallets = await lastValueFrom(this.walletService.getAll());
+      this.wallets = await lastValueFrom(this.walletService.getAll());      
     } catch (error) {
       console.error('Error loading wallets:', error);
       this.wallets = [];
     }
     this.sharedService.selectedValue$.subscribe((wallet) => {
-      this.selectedWallet = wallet;
+      this.selectedWallet = wallet;      
     });
+    this.cdr.detectChanges()
   }
   openCreateWalletDialog() {
     const dialogRef = this.dialog.open(CreateWalletDialogComponent);
     dialogRef.afterClosed().subscribe(response => {
       if (response) {
-        this.refreshingComponent()        
+        this.refreshingComponent();              
       };
     }
     );
+   
   }
 
 }

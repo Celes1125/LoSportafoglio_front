@@ -9,26 +9,26 @@ import { Subject } from 'rxjs'; // Importa Subject
 import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators'; // Añadido debounceTime, distinctUntilChanged, filter
 
 @Component({
-  standalone:true,
+  standalone: true,
   selector: 'app-login-page',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
-export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnInit y OnDestroy
-  form!: FormGroup;  // Usar ! para indicar que se inicializará en ngOnInit
-  loginForm!: FormGroup; // Usar ! para indicar que se inicializará en ngOnInit
+export class LoginPageComponent implements OnInit, OnDestroy {
+  form!: FormGroup;
+  loginForm!: FormGroup;
   private destroy$ = new Subject<void>();
 
   constructor(
-    private fb: FormBuilder, // Renombrado para abreviar y seguir convención
-    private snackBar: MatSnackBar, // Renombrado
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private userService: UserService,
     private authenticationService: AuthenticationService,
     private router: Router,
-  ) {}
+  ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.form = this.fb.group({
       name: ["", [Validators.required, Validators.minLength(4)]],
       email: ["", [Validators.required, Validators.email]],
@@ -43,6 +43,7 @@ export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnI
 
     // Snackbar listeners
     this.setupFormControlListeners();
+
   }
 
   private setupFormControlListeners(): void {
@@ -92,14 +93,14 @@ export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnI
     });
   }
 
-  // Método helper para mostrar SnackBar si es necesario
+  // helper
   private showErrorSnackBarIfNeeded(control: AbstractControl | null, message: string): void {
     if (control && control.invalid && control.touched) { // Verifica 'invalid' Y 'touched'
       this.openSnackBar(message);
     }
   }
 
-  ngOnDestroy(): void { // Implementar ngOnDestroy
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
@@ -109,18 +110,18 @@ export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnI
   //signup method
   signup() {
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); 
+      this.form.markAllAsTouched();
       this.openSnackBar("Please correct the errors in the registration form.");
       return;
     }
     const user = this.form.value;
     this.userService.create(user).subscribe(
       response => {
-        if (response) { 
-          this.router.navigateByUrl('/dashboard');}
-    });  
-    this.form.reset();          
-    this.router.navigateByUrl('/dashboard'); 
+        if (response) {          
+          window.location.href = '/login';
+        }
+      })
+      this.form.reset();
   }
 
   //signin method
@@ -134,9 +135,10 @@ export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnI
     const password = this.loginForm.value.password;
     this.authenticationService.login(email, password).subscribe(
       response => {
-        if (response) { 
-          this.router.navigateByUrl('/dashboard');}
-    });    
+        if (response) {
+          this.router.navigateByUrl('/dashboard');
+        }
+      });
   }
 
   //snackbar method message configuration
@@ -144,7 +146,7 @@ export class LoginPageComponent implements OnInit, OnDestroy { // Implementa OnI
     this.snackBar.open(message, '', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
-      duration: 3500 // Aumenté un poco la duración
+      duration: 3000 //
     });
   }
 }

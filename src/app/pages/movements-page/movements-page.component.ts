@@ -2,7 +2,6 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-
 import { catchError, of, tap } from 'rxjs';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
@@ -14,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import { EventEmitter } from 'stream';
+
 @Component({
   selector: 'app-movements-page',
   standalone: true,
@@ -23,7 +22,7 @@ import { EventEmitter } from 'stream';
   styleUrl: './movements-page.component.css'
 })
 export class MovementsPageComponent implements OnChanges, OnInit {
-  movements: any;
+  movements: any[] = [];
   dataSource: any;
   users: any[] = [];
   categories: any[] = [];
