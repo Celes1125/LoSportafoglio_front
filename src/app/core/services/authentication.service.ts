@@ -19,17 +19,14 @@ export class AuthenticationService {
     return this.userService.login(email, password).pipe(
       tap((response: any) => {
         if (response && response.token) {
-          alert('login successfull');
           //sending token to local storage
           localStorage.setItem('token', response.token);                    
-        } else if (response.message == "wrong password") {
-          alert('wrong user or password')
         } else {
-          alert('credentials not matching')
+          alert('Invalid email or password');
         }
       }),
       catchError((error) => {
-        alert('ERROR: ' + error);
+        alert('An error occurred during login. Please try again.');
         return of(null)
       }),
       finalize(() => {
@@ -39,18 +36,15 @@ export class AuthenticationService {
   }  
   //login check
   isLogged() {
-    return !!localStorage.getItem('token')
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+    
+    // Simple check if token has 3 parts (JWT format)
+    return token.split('.').length === 3;
   }    
   // get user id
 getUserId(): Observable<any> {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    console.error("No token found");
-    return throwError(() => new Error("No token found"));
-  }
-
-  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  return this.httpClient.get(`${this.apiUrl}/users/token/${token}`, { headers }).pipe(
+  return this.httpClient.get(`${this.apiUrl}/users/me`).pipe(
     tap((response: any) => {
       console.log('userId from auth service: ', response);
       return response;

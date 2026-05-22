@@ -91,17 +91,7 @@ export class MovementService {
   }
   // get pdf of complete all movements table !!!WARNING!!! be carefull, could be a big request  
   getPdfMovementsTable(): Observable<Blob> {
-    // get token (from local storage or an authentication service)    
-    const token = localStorage.getItem('token');
-
-    // set headers, including the token
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,  // header for the token, using bearer
-      'Content-Type': 'application/json'   // content type header
-    });
-
     return this.http.get(`${this.url}getTable/${this.userId}`, {
-      headers: headers,                    // including headers
       responseType: 'blob'                 // The answer will be a blob (PDF)
     }).pipe(
       catchError(error => {
@@ -112,15 +102,7 @@ export class MovementService {
   }
   // get pdf of filtered movements table !!!WARNING!!! be carefull, also could be a big request 
   getPdfMovementsTableWithFilters(filters: any): Observable<Blob> {
-    // get token (from local storage or an authentication service) 
-    const token = localStorage.getItem('token');
-    // set headers, including the token
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,  // header for the token, using bearer
-      'Content-Type': 'application/json'   // content type header
-    });
     return this.http.post(`${this.url}getTable/${this.userId}`, filters, {
-      headers: headers,                    // including headers
       responseType: 'blob'                  // The answer will be a blob (PDF)
     }).pipe(
       catchError(error => {
