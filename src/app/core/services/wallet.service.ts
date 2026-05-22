@@ -29,12 +29,16 @@ export class WalletService {
 
   // returns all not deleted wallets of the user
   getAll(): Observable<Wallet[]> {
-    return this.http.get<Wallet[]>(this.url + 'notDeleted').pipe(
-      tap((wallets) => console.log('all not deleted wallets of the user: ', wallets)),
-      defaultIfEmpty([]), // return an empty array if there is not any wallet
-      catchError((error) => {
-        console.error('Error fetching wallets:', error);
-        return of([]); //return an empty array if an error exists
+    return this._authService.getUserId().pipe(
+      switchMap(userId => {
+        return this.http.get<Wallet[]>(this.url + 'notDeleted/' + userId).pipe(
+          tap((wallets) => console.log('all not deleted wallets of the user: ', wallets)),
+          defaultIfEmpty([]), // return an empty array if there is not any wallet
+          catchError((error) => {
+            console.error('Error fetching wallets:', error);
+            return of([]); //return an empty array if an error exists
+          })
+        );
       })
     );
   }

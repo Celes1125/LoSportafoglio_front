@@ -27,7 +27,10 @@ export class VendorService {
   }
   // get all not deleted vendors of the user
   getAll(): Observable<Vendor[]> {
-    return this.http.get<Vendor[]>(this.url + 'notDeleted').pipe(
+    return this._authService.getUserId().pipe(
+      concatMap((userId) => {
+        return this.http.get<Vendor[]>(this.url + 'notDeleted/' + userId)
+      }),
       //If empty, returns an empty array
       defaultIfEmpty([]),
       // error manage

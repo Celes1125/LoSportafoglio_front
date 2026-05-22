@@ -29,7 +29,10 @@ export class CategoryService {
   }
   // get all not deleted categories of the user
   getAll(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.url + 'notDeleted').pipe(
+    return this._authService.getUserId().pipe(
+      concatMap((userId) => {
+        return this.http.get<Category[]>(this.url + 'notDeleted/' + userId)
+      }),
       //If empty, returns an empty array
       defaultIfEmpty([]),
       // error manage
