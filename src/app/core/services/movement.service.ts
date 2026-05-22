@@ -30,7 +30,7 @@ export class MovementService {
   }
   //get all movements of the user
   getAll(): Observable<any> {
-    let movesUrl = this.url + 'userMovements/' + this.userId;
+    let movesUrl = this.url + 'userMovements';
     console.log('MOVESURL: ', movesUrl)
     return this.http.get<Movement[]>(movesUrl).pipe(
       tap((filteredMovements: any) => console.log("filtered movements: ", filteredMovements)),
@@ -62,8 +62,7 @@ export class MovementService {
   }
   //delete movements by user
   deleteMovementsByUser() {
-    let id = this.userId
-    const url = this.url + "byUserId/" + id
+    const url = this.url + "byUserId"
     return this.http.delete(url).pipe(
       tap(response => response),
       catchError(error => error),
@@ -91,7 +90,7 @@ export class MovementService {
   }
   // get pdf of complete all movements table !!!WARNING!!! be carefull, could be a big request  
   getPdfMovementsTable(): Observable<Blob> {
-    return this.http.get(`${this.url}getTable/${this.userId}`, {
+    return this.http.get(`${this.url}getTable`, {
       responseType: 'blob'                 // The answer will be a blob (PDF)
     }).pipe(
       catchError(error => {
@@ -102,7 +101,7 @@ export class MovementService {
   }
   // get pdf of filtered movements table !!!WARNING!!! be carefull, also could be a big request 
   getPdfMovementsTableWithFilters(filters: any): Observable<Blob> {
-    return this.http.post(`${this.url}getTable/${this.userId}`, filters, {
+    return this.http.post(`${this.url}getTable`, filters, {
       responseType: 'blob'                  // The answer will be a blob (PDF)
     }).pipe(
       catchError(error => {
