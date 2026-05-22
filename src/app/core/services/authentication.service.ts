@@ -43,11 +43,13 @@ export class AuthenticationService {
     return token.split('.').length === 3;
   }    
   // get user id
-getUserId(): Observable<any> {
-  return this.httpClient.get(`${this.apiUrl}/users/me`).pipe(
-    tap((response: any) => {
-      console.log('userId from auth service: ', response);
-      return response;
+getUserId(): Observable<string> {
+  return this.httpClient.get<any>(`${this.apiUrl}/users/me`).pipe(
+    map((response: any) => {
+      // Assuming the backend returns the user object with an _id property
+      const id = response._id || response.id || response;
+      console.log('userId from auth service: ', id);
+      return id;
     }),
     catchError(error => {
       console.error('Error fetching user ID', error);
